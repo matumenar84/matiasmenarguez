@@ -105,29 +105,44 @@
     </section>
 
     <section id="contact" class="py-24 px-6 bg-zinc-900">
-        <div class="max-w-3xl mx-auto">
-            <h2 class="text-center serif text-4xl italic mb-12">Start Your Project</h2>
-            <<form name="contact" method="POST" action="/success.html" data-netlify="true">
-  <input type="hidden" name="form-name" value="contact" />
-  
-  <div class="grid md:grid-cols-2 gap-6">
-      <input type="text" name="name" placeholder="Name" required class="...">
-      <input type="email" name="email" placeholder="Email" required class="...">
-  </div>
-  
-  <select name="service" class="...">
-      <option disabled selected>Select Service</option>
-      <option>Remote Drum Recording</option>
-      <option>Mixing & Production</option>
-      <option>Drum Lessons (NJ / Zoom)</option>
-  </select>
-  
-  <textarea name="message" rows="5" placeholder="Tell me about your song..." class="..."></textarea>
-  
-  <button type="submit" class="...">Submit Project Brief</button>
-</form>
-        </div>
-    </section>
+    <div class="max-w-3xl mx-auto">
+        <h2 class="text-center serif text-4xl md:text-5xl italic mb-12 text-white">Start Your Project</h2>
+        
+        <form name="contact" method="POST" action="/success.html" data-netlify="true" class="space-y-6">
+            <input type="hidden" name="form-name" value="contact">
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="flex flex-col">
+                    <label class="text-xs uppercase tracking-widest text-gray-500 mb-2">Name</label>
+                    <input type="text" name="name" required class="bg-black border border-white/10 p-4 focus:border-cyan-400 outline-none text-white transition">
+                </div>
+                <div class="flex flex-col">
+                    <label class="text-xs uppercase tracking-widest text-gray-500 mb-2">Email</label>
+                    <input type="email" name="email" required class="bg-black border border-white/10 p-4 focus:border-cyan-400 outline-none text-white transition">
+                </div>
+            </div>
+
+            <div class="flex flex-col">
+                <label class="text-xs uppercase tracking-widest text-gray-500 mb-2">Service Needed</label>
+                <select name="service" required class="bg-black border border-white/10 p-4 focus:border-cyan-400 outline-none text-gray-400 transition appearance-none">
+                    <option disabled selected value="">Select a Service...</option>
+                    <option value="Drums">Remote Drum Recording</option>
+                    <option value="Mixing">Mixing & Production</option>
+                    <option value="Lessons">Drum Lessons (NJ / Zoom)</option>
+                </select>
+            </div>
+
+            <div class="flex flex-col">
+                <label class="text-xs uppercase tracking-widest text-gray-500 mb-2">Project Brief</label>
+                <textarea name="message" rows="5" placeholder="Tell me about your song (Tempo, Vibe, Reference tracks...)" class="bg-black border border-white/10 p-4 focus:border-cyan-400 outline-none text-white transition"></textarea>
+            </div>
+
+            <button type="submit" class="w-full bg-cyan-500 text-black py-5 font-bold uppercase tracking-widest hover:bg-white transition shadow-lg">
+                Submit Project Brief
+            </button>
+        </form>
+    </div>
+</section>
 
     <footer class="py-12 text-center text-gray-600 text-sm border-t border-white/5">
         &copy; 2026 Matias Menarguez. Located in Mount Olive, NJ.

@@ -144,7 +144,7 @@
 
                 <div class="flex flex-col">
                     <label class="text-xs uppercase tracking-widest text-gray-500 mb-2">Service Needed</label>
-                    <select name="service" required class="bg-black border border-white/10 p-4 focus:border-cyan-400 outline-none text-gray-400 transition appearance-none">
+                    <select name="service" id="service-select" required class="bg-black border border-white/10 p-4 focus:border-cyan-400 outline-none text-gray-400 transition appearance-none">
                         <option disabled selected value="">Select a Service...</option>
                         <option value="Drums">Remote Drum Recording</option>
                         <option value="Mixing">Mixing & Production</option>
@@ -153,9 +153,9 @@
                 </div>
 
                 <div class="flex flex-col">
-                    <label class="text-xs uppercase tracking-widest text-gray-500 mb-2">Project Brief</label>
-                    <textarea name="message" rows="5" placeholder="Tell me about your song (Tempo, Vibe, Reference tracks...)" class="bg-black border border-white/10 p-4 focus:border-cyan-400 outline-none text-white transition"></textarea>
-                </div>
+    <label id="message-label" class="text-xs uppercase tracking-widest text-gray-500 mb-2">Project Brief</label>
+    <textarea id="message-area" name="message" rows="5" placeholder="Tell me about your song (Tempo, Vibe, Reference tracks...)" class="bg-black border border-white/10 p-4 focus:border-cyan-400 outline-none text-white transition"></textarea>
+</div>
 
                 <button type="submit" class="w-full bg-cyan-500 text-black py-5 font-bold uppercase tracking-widest hover:bg-white transition shadow-lg">
                     Submit Project Brief
@@ -181,6 +181,33 @@
                 }
             });
         });
+        const serviceSelect = document.getElementById('service-select');
+    const messageLabel = document.getElementById('message-label');
+    const messageArea = document.getElementById('message-area');
+
+    const placeholderMap = {
+    'Drums': {
+        label: 'Session Details',
+        placeholder: 'Tell me about your song: Tempo (BPM), Vibe/Reference tracks, and how many songs you need tracked.'
+    },
+    'Mixing': {
+        label: 'Mixing Project Brief',
+        placeholder: 'Number of stems, genre, and your vision for the final sound. Link to a rough demo if possible.'
+    },
+    'Lessons': {
+        label: 'Student Information',
+        placeholder: 'Tell me about the student: Age, current skill level (Beginner/Pro), and what you want to achieve (Technique, Jazz, Reading, etc.).'
+    }
+};
+
+serviceSelect.addEventListener('change', (e) => {
+    const selection = e.target.value;
+    if (placeholderMap[selection]) {
+        messageLabel.innerText = placeholderMap[selection].label;
+        messageArea.placeholder = placeholderMap[selection].placeholder;
+    }
+});
     </script>
+    
 </body>
 </html>

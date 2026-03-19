@@ -1,79 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Matias Menarguez | Pro Drums & Mixing | Mount Olive, NJ</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,600;1,700&family=Tenor+Sans&display=swap" rel="stylesheet">
+    
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: #e5e5e5; scroll-behavior: smooth; }
-        .serif { font-family: 'Playfair Display', serif; }
-        .accent-border { border-left: 4px solid #00D4FF; }
-        .gradient-overlay { background: linear-gradient(0deg, rgba(10,10,10,1) 0%, rgba(10,10,10,0.6) 100%); }
-        .z-10 { z-index: 10; }
+        body { 
+            font-family: 'Tenor Sans', sans-serif; 
+            background-color: #0a0a0a; 
+            color: #d1d1d1; 
+            scroll-behavior: smooth;
+            line-height: 1.7;
+            letter-spacing: 0.03em;
+        }
+        
+        /* The Header Font: Sharp, italic, and prestigious */
+        .serif { 
+            font-family: 'Cormorant Garamond', serif; 
+            font-style: italic;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+        
+        /* Navigation & Buttons: Keeping them ultra-clean */
+        nav, button, .tracking-widest {
+            font-family: 'Tenor Sans', sans-serif;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+        
+        .accent-border { border-left: 2px solid #00D4FF; }
+        .gradient-overlay { background: linear-gradient(0deg, rgba(10,10,10,1) 0%, rgba(10,10,10,0.4) 100%); }
+
+        /* High-End Parallax Effect */
+.parallax-bg {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+/* Dark overlay to keep your white text readable */
+.bg-overlay {
+    background: linear-gradient(to bottom, rgba(10,10,10,0.8), rgba(10,10,10,0.6));
+    width: 100%;
+    height: 100%;
+}
     </style>
 </head>
 <body class="antialiased">
 
     <nav class="fixed w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="text-xl font-bold tracking-tighter">MATIAS <span class="text-cyan-400">MENARGUEZ</span></div>
-            <div class="hidden md:flex space-x-8 text-sm uppercase tracking-widest">
-                <a href="#sessions" class="hover:text-cyan-400 transition">Drums</a>
-                <a href="#listen" class="hover:text-cyan-400 transition">Listen</a>
-                <a href="#lessons" class="hover:text-cyan-400 transition">Lessons</a>
-                <a href="#about" class="hover:text-cyan-400 transition">About</a>
-                <a href="#contact" class="bg-cyan-500 text-black px-4 py-2 font-bold hover:bg-white transition">Hire Me</a>
-            </div>
+    <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+        <div class="text-xl font-bold tracking-tighter leading-none flex items-center">
+            MATIAS <span class="text-cyan-400 ml-1">MENARGUEZ</span>
         </div>
-    </nav>
-
-    <header class="relative h-screen flex items-center justify-center overflow-hidden">
-        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-40"></div>
-        <div class="absolute inset-0 gradient-overlay"></div>
         
-        <div class="relative z-10 text-center px-6">
-            <h1 class="serif text-5xl md:text-8xl mb-4 italic">Analog Soul. Digital Precision.</h1>
-            <p class="text-lg md:text-2xl font-light tracking-wide max-w-2xl mx-auto text-gray-400">
-                World-class session drums & mixing from my professional studio in Mount Olive, NJ.
-            </p>
-            <div class="mt-10 space-x-4">
-                <a href="#contact" class="px-8 py-4 bg-white text-black font-bold uppercase tracking-widest hover:bg-cyan-400 transition">Start A Project</a>
-                <a href="#sessions" class="px-8 py-4 border border-white/20 uppercase tracking-widest hover:bg-white/10 transition">Listen to Work</a>
-            </div>
+        <div class="hidden md:flex items-center space-x-8 text-xs uppercase tracking-[0.2em]">
+            <a href="#sessions" class="hover:text-cyan-400 transition">Recording</a>
+            <a href="#listen" class="hover:text-cyan-400 transition">Listen</a>
+            <a href="#reviews" class="hover:text-cyan-400 transition">Reviews</a>
+            <a href="#lessons" class="hover:text-cyan-400 transition">Lessons</a>
+            <a href="#about" class="hover:text-cyan-400 transition">About</a>
+            <a href="#contact" class="bg-cyan-500 text-black px-5 py-2.5 font-bold hover:bg-white transition ml-4">
+                Hire Me
+            </a>
         </div>
-    </header>
+    </div>
+</nav>
 
-    <section id="sessions" class="py-24 px-6 border-b border-white/5">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex flex-col md:flex-row justify-between mb-16">
-                <h2 class="serif text-4xl md:text-6xl italic mb-6 md:mb-0">The Studio Specs</h2>
-                <div class="max-w-md text-gray-500">
-                    High-fidelity multitracks tracked through <b>Kultrumm & Neve clone</b> signal chains.
-                </div>
+    <header class="relative min-h-screen flex items-center justify-center overflow-hidden parallax-bg" 
+        style="background-image: url('img/Drums\ POV.JPEG');">
+    
+    <div class="absolute inset-0 bg-black/65 backdrop-blur-[2px]"></div>
+    
+    <div class="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-black to-transparent pointer-events-none"></div>
+    <div class="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-black to-transparent pointer-events-none"></div>
+
+    <div class="relative z-10 text-center px-6 py-20">
+        
+        <h1 class="serif text-5xl md:text-8xl mb-8 italic text-white drop-shadow-[0_4px_10px_rgba(0,0,0,1)]">Analog Soul. Digital Precision.</h1>
+        
+        <p class="text-xl md:text-2xl leading-relaxed font-light mb-16 max-w-2xl mx-auto text-gray-300 italic tracking-wide">
+            World-class session drums & mixing from my professional studio in Mount Olive, NJ.
+        </p>
+        
+        <div class="flex flex-col md:flex-row items-center justify-center gap-6">
+            <a href="#contact" class="px-10 py-5 bg-white text-black font-bold uppercase tracking-[0.2em] hover:bg-cyan-400 transition-all duration-300 shadow-xl">
+                Start A Project
+            </a>
+            <a href="#listen" class="px-10 py-5 border border-white/30 text-white uppercase tracking-[0.2em] hover:bg-white/10 transition-all duration-300">
+                Listen to Work
+            </a>
+            <a href="#lessons" class="px-10 py-5 border border-white/30 text-white uppercase tracking-[0.2em] hover:bg-white/10 transition-all duration-300">
+                Private drum lessons
+            </a>
+        </div>
+    </div>
+</header>
+
+    <section id="sessions" class="relative py-32 px-6 parallax-bg overflow-hidden" 
+         style="background-image: url('img/Rack.jpeg');">
+    
+    <div class="absolute inset-0 bg-black/85"></div>
+    
+    <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black to-transparent pointer-events-none"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row justify-between mb-16 items-start">
+            <h2 class="serif text-4xl md:text-6xl italic mb-6 md:mb-0 text-white">The Studio Specs</h2>
+            
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-16">
+            <div>
+                <h4 class="text-cyan-400 uppercase tracking-widest text-sm font-bold mb-6">The Hardware</h4>
+                <ul class="space-y-4 text-gray-300">
+                    <li><span class="text-white font-bold">Kits:</span> Gretsch Round Badge 60s, Gretsch Jazz kit</li>
+                    <li><span class="text-white font-bold">Preamps:</span> 2x Kultrumm TAB V376, 4x Behringer v1273, Audient ASP880</li>
+                    <li><span class="text-white font-bold">Audio Interface:</span> Universal Audio Apollo x8p</li>
+                    <li><span class="text-white font-bold">Microphones:</span> Lauten Audio, AKG, Shure, PBM, AT, Ribbons</li>
+                </ul>
             </div>
-            <div class="grid md:grid-cols-2 gap-16">
-                <div>
-                    <h4 class="text-cyan-400 uppercase tracking-widest text-sm font-bold mb-6">The Hardware</h4>
-                    <ul class="space-y-4 text-gray-300">
-                        <li><span class="text-white font-bold">Kits:</span> Gretsch Round Badge 60s, Gretsch Jazz kit</li>
-                        <li><span class="text-white font-bold">Preamps:</span> 2x Kultrumm TAB V376, 4x Behringer v1273, Audient ASP880</li>
-                        <li><span class="text-white font-bold">Audio Interface:</span> Universal Audio Apollo x8p</li>
-                        <li><span class="text-white font-bold">Microphones:</span> Lauten Audio, AKG, Shure, PBM, AT, Ribbons</li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-cyan-400 uppercase tracking-widest text-sm font-bold mb-6">The Software</h4>
-                    <ul class="space-y-4 text-gray-300">
-                        <li><span class="text-white font-bold">DAW:</span> LUNA</li>
-                        <li><span class="text-white font-bold">Plugins:</span> Full UAD-2 Library, FabFilter, Softube, etc</li>
-                        <li><span class="text-white font-bold">Delivery:</span> 48kHz/24-bit WAV Multitracks</li>
-                    </ul>
-                </div>
+            <div>
+                <h4 class="text-cyan-400 uppercase tracking-widest text-sm font-bold mb-6">The Software</h4>
+                <ul class="space-y-4 text-gray-300">
+                    <li><span class="text-white font-bold">DAW:</span> LUNA</li>
+                    <li><span class="text-white font-bold">Plugins:</span> Full UAD-2 Library, FabFilter, Softube, etc</li>
+                    <li><span class="text-white font-bold">Delivery:</span> 48kHz/24-bit WAV Multitracks</li>
+                </ul>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <section id="listen" class="py-24 bg-black px-6 border-t border-white/5">
     <div class="max-w-7xl mx-auto">
@@ -84,25 +145,123 @@
             <div class="flex flex-col">
                 <h4 class="text-cyan-400 uppercase tracking-widest text-[10px] font-bold mb-6 text-center md:text-left">Session Drums</h4>
                 <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/2rPdxmddcXXQ8GB6F5w9zR?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                <p class="mt-6 text-xs text-gray-500 italic leading-relaxed">A curated selection of international tracks featuring my session drum work.</p>
+                <p class="mt-6 text-sm text-gray-400 italic leading-relaxed tracking-wide">A curated selection of international tracks featuring my session drum work.</p>
             </div>
 
             <div class="flex flex-col">
                 <h4 class="text-cyan-400 uppercase tracking-widest text-[10px] font-bold mb-6 text-center md:text-left">Solo Production</h4>
                 <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/album/3z7xU39JmDIlBsidIkFpMx?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                <p class="mt-6 text-xs text-gray-500 italic leading-relaxed">Compilation of self-composed, performed, and recorded works from the private archives.</p>
+                <p class="mt-6 text-sm text-gray-400 italic leading-relaxed tracking-wide">Compilation of self-composed, performed, and recorded works from the private archives.</p>
             </div>
 
             <div class="flex flex-col">
                 <h4 class="text-cyan-400 uppercase tracking-widest text-[10px] font-bold mb-6 text-center md:text-left">Modern Jazz Duo</h4>
                 <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/album/7JlVSPgtVbWiRnNsoY75LC?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                <p class="mt-6 text-xs text-gray-500 italic leading-relaxed">Latest exploration in modern jazz and improvisational duo performance.</p>
+                <p class="mt-6 text-sm text-gray-400 italic leading-relaxed tracking-wide">Latest exploration in modern jazz and improvisational duo performance.</p>
             </div>
 
         </div>
     </div>
 </section>
+    <section id="reviews" class="py-24 bg-zinc-950 px-6 border-t border-white/5">
+    <div class="max-w-6xl mx-auto">
+        <h2 class="serif text-4xl md:text-6xl italic mb-16 text-center text-white">What Artists Say</h2>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            
+            <div class="p-10 border border-white/5 bg-black flex flex-col justify-between shadow-xl">
+                <div>
+                    <p class="text-cyan-400 text-3xl serif mb-4">“</p>
+                    <p class="serif text-xl italic text-gray-300 leading-relaxed">Simply excellent! Look no further than Matias.</p>
+                </div>
+                <div class="mt-10 pt-6 border-t border-white/10">
+                    <p class="text-[10px] uppercase tracking-[0.3em] text-white font-bold">Julian Bradley</p>
+                </div>
+            </div>
 
+            <div class="p-10 border border-white/5 bg-black flex flex-col justify-between shadow-xl">
+                <div>
+                    <p class="text-cyan-400 text-3xl serif mb-4">“</p>
+                    <p class="serif text-xl italic text-gray-300 leading-relaxed">Matias is the bomb! His drums are killer and he's been incredibly patient with a DIVA in myself. Thank you so much Matias!</p>
+                </div>
+                <div class="mt-10 pt-6 border-t border-white/10">
+                    <p class="text-[10px] uppercase tracking-[0.3em] text-white font-bold">Josiah Mann</p>
+                </div>
+            </div>
+
+            <div class="p-10 border border-white/5 bg-black flex flex-col justify-between shadow-xl">
+                <div>
+                    <p class="text-cyan-400 text-3xl serif mb-4">“</p>
+                    <p class="serif text-xl italic text-gray-300 leading-relaxed">Matias is a great player. He is a very musical drummer who is sensitive to dynamics, emotion and atmosphere.</p>
+                </div>
+                <div class="mt-10 pt-6 border-t border-white/10">
+                    <p class="text-[10px] uppercase tracking-[0.3em] text-white font-bold">Charles Berthoud</p>
+                </div>
+            </div>
+
+            <div class="p-10 border border-white/5 bg-black flex flex-col justify-between shadow-xl">
+                <div>
+                    <p class="text-cyan-400 text-3xl serif mb-4">“</p>
+                    <p class="serif text-xl italic text-gray-300 leading-relaxed">Fantastic playing, great quality audio and mixing, and super friendly and attentive. I couldn't recommend him highly enough!</p>
+                </div>
+                <div class="mt-10 pt-6 border-t border-white/10">
+                    <p class="text-[10px] uppercase tracking-[0.3em] text-white font-bold">Tommy Buckley</p>
+                </div>
+            </div>
+
+            <div class="p-10 border border-white/5 bg-black flex flex-col justify-between shadow-xl">
+                <div>
+                    <p class="text-cyan-400 text-3xl serif mb-4">“</p>
+                    <p class="serif text-xl italic text-gray-300 leading-relaxed">Matias always exceeds expectations and delivers top quality drum tracks for your project, taking it to the next level. A true pro.</p>
+                </div>
+                <div class="mt-10 pt-6 border-t border-white/10">
+                    <p class="text-[10px] uppercase tracking-[0.3em] text-white font-bold">Bav</p>
+                </div>
+            </div>
+
+            <div class="p-10 border border-white/5 bg-black flex flex-col justify-between shadow-xl">
+                <div>
+                    <p class="text-cyan-400 text-3xl serif mb-4">“</p>
+                    <p class="serif text-xl italic text-gray-300 leading-relaxed">Matias delivered exactly what I asked for in less than 24 hours. When I asked him to add a small fill he delivered that promptly as well.</p>
+                </div>
+                <div class="mt-10 pt-6 border-t border-white/10">
+                    <p class="text-[10px] uppercase tracking-[0.3em] text-white font-bold">Michael Waite</p>
+                </div>
+            </div>
+
+            <div class="p-10 border border-white/5 bg-black flex flex-col justify-between shadow-xl">
+                <div>
+                    <p class="text-cyan-400 text-3xl serif mb-4">“</p>
+                    <p class="serif text-xl italic text-gray-300 leading-relaxed">Matias is a super musician. His drum parts are in the pocket and highly creative. His tracks sound perfect. I highly recommend him!</p>
+                </div>
+                <div class="mt-10 pt-6 border-t border-white/10">
+                    <p class="text-[10px] uppercase tracking-[0.3em] text-white font-bold">Jeff Lopez</p>
+                </div>
+            </div>
+
+            <div class="p-10 border border-white/5 bg-black flex flex-col justify-between shadow-xl">
+                <div>
+                    <p class="text-cyan-400 text-3xl serif mb-4">“</p>
+                    <p class="serif text-xl italic text-gray-300 leading-relaxed">Matias is an awesome drummer, he completely understood what the track needed and delivered quickly.</p>
+                </div>
+                <div class="mt-10 pt-6 border-t border-white/10">
+                    <p class="text-[10px] uppercase tracking-[0.3em] text-white font-bold">Jonny Kerry</p>
+                </div>
+            </div>
+        </div> <div class="mt-20 pt-16 border-t border-white/5 w-full flex flex-col items-center justify-center text-center">
+            <p class="text-[12px] uppercase tracking-[0.3em] text-gray-200 mb-10 block font-normal">Verified reviews via</p>
+            <div class="flex flex-col md:flex-row justify-center items-center gap-6">
+                <a href="https://soundbetter.com/profiles/55563-matias-menarguez" target="_blank" class="group flex items-center px-6 py-3 border border-white/10 hover:border-cyan-400/50 transition-all duration-300 transform hover:-translate-y-1">
+                    <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400 group-hover:text-cyan-400">SoundBetter</span>
+                    <span class="ml-3 text-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                </a>
+                <a href="https://www.airgigs.com/user/Matumenar" target="_blank" class="group flex items-center px-6 py-3 border border-white/10 hover:border-cyan-400/50 transition-all duration-300 transform hover:-translate-y-1">
+                    <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400 group-hover:text-cyan-400">AirGigs</span>
+                    <span class="ml-3 text-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                </a>
+            </div>
+        </div>
+    </div> </section>
    <section id="lessons" class="py-24 bg-cyan-500 text-black px-6">
     <div class="max-w-7xl mx-auto text-center">
         <h2 class="serif text-5xl md:text-7xl italic mb-4 text-zinc-900">Modern Education</h2>
@@ -120,19 +279,29 @@
                 <a href="https://calendly.com/matumenar/welcome-class" class="block w-full py-4 bg-zinc-900 text-white font-bold uppercase text-xs tracking-widest hover:bg-cyan-600 transition">Book Free Intro</a>
             </div>
 
-            <div class="bg-zinc-900 p-10 shadow-2xl border-t-8 border-white text-white flex flex-col h-full transform scale-105 z-10 transition">
-                <div class="bg-white text-black text-[10px] font-bold py-1 px-3 inline-block mx-auto mb-4 tracking-widest uppercase">Best Value</div>
-                <h3 class="serif text-3xl italic mb-4">Weekly Residency</h3>
-                <p class="text-sm text-gray-400 mb-8 flex-grow leading-relaxed">
-                    Four 60-minute lessons per month. One fixed time slot per week, reserved exclusively for you.
-                </p>
-                <div class="mb-8">
-                    <span class="text-3xl font-bold italic">$270</span>
-                    <span class="text-gray-500 text-sm italic">/ month</span>
-                    <p class="text-[10px] text-cyan-400 font-bold mt-2 uppercase tracking-widest">Save $50 Monthly</p>
-                </div>
-                <a href="https://buy.stripe.com/3cI9AVgq2aMP5WVcZQbwk02" class="block w-full py-4 bg-cyan-500 text-black font-bold uppercase text-xs tracking-widest hover:bg-white transition">Reserve My Slot</a>
-            </div>
+            <div class="bg-zinc-900 p-10 shadow-[0_20px_50px_rgba(0,0,0,0.3)] flex flex-col h-full transform scale-105 z-10 transition border border-white/5 relative">
+    
+    <div class="absolute -top-3 left-1/2 -translate-x-1/2">
+        <span class="bg-cyan-500 text-black text-[10px] font-bold py-1 px-4 uppercase tracking-[0.2em] shadow-lg">
+            Best Value
+        </span>
+    </div>
+
+    <h3 class="serif text-3xl italic mb-4 mt-4 text-white">Weekly Residency</h3>
+    <p class="text-sm text-gray-400 mb-8 flex-grow leading-relaxed">
+        Four 60-minute lessons per month. One fixed time slot per week, reserved exclusively for you.
+    </p>
+    
+    <div class="mb-8">
+        <span class="text-4xl font-bold italic text-white">$270</span>
+        <span class="text-gray-500 text-sm italic">/ month</span>
+        <p class="text-[10px] text-cyan-400 font-bold mt-2 uppercase tracking-[0.2em]">Save $50 Monthly</p>
+    </div>
+
+    <a href="https://buy.stripe.com/3cI9AVgq2aMP5WVcZQbwk02" class="block w-full py-4 bg-cyan-500 text-black font-bold uppercase text-xs tracking-[0.2em] hover:bg-white transition">
+        Reserve My Slot
+    </a>
+</div>
 
             <div class="bg-white/90 p-8 shadow-xl flex flex-col h-full transform hover:-translate-y-1 transition">
                 <span class="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2 block">Existing Students</span>
@@ -145,18 +314,29 @@
         </div>
     </div>
     </section>
-    <section id="about" class="py-24 bg-white text-black px-6">
-        <div class="max-w-5xl mx-auto text-center">
-            <h2 class="serif text-5xl italic mb-12 text-zinc-900">21 Years of Rhythm.</h2>
-            <p class="text-xl md:text-2xl leading-relaxed font-light mb-8 italic">
-                From a prestigious scholarship at EMBA in Buenos Aires to International Jazz Festivals in Belize and NYC.
-            </p>
-            <p class="text-lg text-gray-600 mb-12 max-w-3xl mx-auto">
-                Having toured through Chile, Argentina, and the United States with diverse musical projects, I have lived at the intersection of performance and production. My approach is shaped by years of pit experience in iconic theaters and thousands of hours in the studio.
-            </p>
-            <a href="/bio.html" class="text-cyan-600 font-bold underline hover:text-black transition uppercase tracking-widest text-sm">Read Full Career Bio</a>
+    <section id="about" class="relative py-32 px-6 parallax-bg overflow-hidden" 
+         style="background-image: url('img/Me.JPEG');">
+    
+    <div class="absolute inset-0 bg-white/65 backdrop-blur-sm"></div>
+
+    <div class="relative z-10 max-w-5xl mx-auto text-center">
+        <h2 class="serif text-5xl md:text-6xl italic mb-12 text-zinc-900">21 Years of Rhythm.</h2>
+        
+        <p class="text-xl md:text-2xl leading-relaxed font-light mb-8 italic text-zinc-800">
+            From a prestigious scholarship at EMBA in Buenos Aires to International Jazz Festivals in Belize and NYC.
+        </p>
+        
+        <p class="text-lg text-gray-700 mb-12 max-w-3xl mx-auto leading-loose">
+            Having toured through Chile, Argentina, and the United States with diverse musical projects, I have lived at the intersection of performance and production. My approach is shaped by years of pit experience in iconic theaters and thousands of hours in the studio.
+        </p>
+        
+        <div class="pt-6">
+            <a href="/bio.html" class="inline-block text-cyan-600 font-bold border-b-2 border-cyan-600/20 hover:border-cyan-600 hover:text-black transition-all duration-300 uppercase tracking-widest text-xs pb-1">
+                Read Full Career Bio
+            </a>
         </div>
-    </section>
+    </div>
+</section>
 
     <section id="contact" class="py-24 px-6 bg-zinc-900">
         <div class="max-w-3xl mx-auto">

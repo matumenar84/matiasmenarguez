@@ -12,160 +12,206 @@
     <link rel="apple-touch-icon" href="favicon.ico">
 
     <style>
-        body { 
-            font-family: 'Tenor Sans', sans-serif; 
-            background-color: #0a0a0a; 
-            color: #d1d1d1; 
-            scroll-behavior: smooth;
-            line-height: 1.7;
-            letter-spacing: 0.03em;
-            overflow-x: hidden; /* Prevents mobile horizontal scroll */
-        }
-        
-        .serif { 
-            font-family: 'Cormorant Garamond', serif; 
-            font-style: italic;
-            font-weight: 600;
-            letter-spacing: -0.01em;
-        }
-        
-        nav, button, .tracking-widest {
-            font-family: 'Tenor Sans', sans-serif;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-        }
-        
-        .accent-border { border-left: 2px solid #00D4FF; }
-        .gradient-overlay { background: linear-gradient(0deg, rgba(10,10,10,1) 0%, rgba(10,10,10,0.4) 100%); }
+    body { 
+        font-family: 'Tenor Sans', sans-serif; 
+        background-color: #0a0a0a; 
+        color: #d1d1d1; 
+        scroll-behavior: smooth;
+        line-height: 1.7;
+        letter-spacing: 0.03em;
+        overflow-x: hidden; /* Prevents mobile horizontal scroll */
+    }
+    
+    .serif { 
+        font-family: 'Cormorant Garamond', serif; 
+        font-style: italic;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+    }
+    
+    nav, button, .tracking-widest {
+        font-family: 'Tenor Sans', sans-serif;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+    }
+    
+    .accent-border { border-left: 2px solid #00D4FF; }
+    .gradient-overlay { background: linear-gradient(0deg, rgba(10,10,10,1) 0%, rgba(10,10,10,0.4) 100%); }
 
-        .parallax-section {
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-            background-color: #000;
-        }
+    /* --- PARALLAX ENGINE --- */
+    .parallax-section {
+        position: relative;
+        overflow: hidden;
+        z-index: 1; /* Container staging */
+        background-color: #000;
+    }
 
+    .parallax-layer {
+        position: absolute;
+        inset: 0;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        z-index: -2; /* Keeps image behind everything */
+    }
+
+    /* Desktop Only Parallax */
+    @media (min-width: 1024px) {
         .parallax-layer {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            z-index: -2;
+            background-attachment: fixed;
         }
+        .parallax-section {
+            margin-top: -1px;
+            padding-top: calc(80px + 1px);
+        }
+    }
 
-        @media (min-width: 1024px) {
-            .parallax-layer {
-                background-attachment: fixed;
-            }
-        }
+    /* --- MOBILE MENU & FIXES --- */
+    #mobile-menu {
+        position: fixed;
+        inset: 0;
+        background: #000;
+        z-index: 1000;
+        transition: transform 0.3s ease-in-out;
+        transform: translateX(100%);
+        display: flex; /* Always flex but off-screen */
+    }
+    
+    #mobile-menu.open {
+        transform: translateX(0);
+    }
 
-        .overlay-dark {
-            position: absolute;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.65);
-            backdrop-filter: blur(2px);
-            z-index: -1;
+    @media (max-width: 768px) {
+        /* Fix Form Zoom */
+        input, textarea, select {
+            font-size: 16px !important;
         }
+        /* Mobile Section Spacing (No negative margin needed) */
+        .parallax-section {
+            padding-top: 80px;
+        }
+    }
 
-        .overlay-light {
-            position: absolute;
-            inset: 0;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(2px);
-            z-index: -1;
-        }
+    /* --- OVERLAYS --- */
+    .overlay-dark {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.65);
+        backdrop-filter: blur(2px);
+        z-index: -1; /* Between image and content */
+    }
 
-        .swiper-wrapper {
-            display: flex;
-            align-items: stretch;
-        }
+    .overlay-light {
+        position: absolute;
+        inset: 0;
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(2px);
+        z-index: -1;
+    }
 
-        .swiper-slide {
-            height: auto;
-            display: flex;
-            flex-direction: column;
-            transition: all 0.5s ease;
-            opacity: 0.2;
-            transform: scale(0.85);
-            filter: blur(4px);
-        }
+    /* --- REVIEWS SWIPER --- */
+    .swiper-wrapper {
+        display: flex;
+        align-items: stretch;
+    }
 
-        .swiper-slide-active {
-            opacity: 1 !important;
-            transform: scale(1.05) !important;
-            filter: blur(0) !important;
-            z-index: 10;
-        }
+    .swiper-slide {
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        transition: all 0.5s ease;
+        opacity: 0.2;
+        transform: scale(0.85);
+        filter: blur(4px);
+    }
 
-        .review-inner {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            height: 100% !important; 
-            width: 100%;
-        }
+    .swiper-slide-active {
+        opacity: 1 !important;
+        transform: scale(1.05) !important;
+        filter: blur(0) !important;
+        z-index: 10;
+    }
 
-        .carousel-nav {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 15px;
-            margin-top: 40px;
-            position: relative;
-            z-index: 20;
-        }
+    .review-inner {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100% !important; 
+        width: 100%;
+    }
 
-        .nav-btn, .pause-btn {
-            background: transparent;
-            border: 1px solid rgba(255,255,255,0.1);
-            color: white;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border-radius: 50%;
-            font-size: 0.8rem;
-        }
+    .carousel-nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        margin-top: 40px;
+        position: relative;
+        z-index: 20;
+    }
 
-        .pause-btn {
-            width: 100px;
-            border-radius: 30px;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            font-size: 10px;
-            font-weight: bold;
-        }
-    </style>
+    .nav-btn, .pause-btn {
+        background: transparent;
+        border: 1px solid rgba(255,255,255,0.1);
+        color: white;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border-radius: 50%;
+        font-size: 0.8rem;
+    }
+
+    .pause-btn {
+        width: 100px;
+        border-radius: 30px;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-size: 10px;
+        font-weight: bold;
+    }
+</style>
 </head>
 <body class="antialiased">
 
-<nav class="fixed w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
+<nav class="fixed w-full z-[100] bg-black/80 backdrop-blur-md border-b border-white/10">
     <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
         <div class="text-xl font-bold tracking-tighter leading-none flex items-center">
             MATIAS <span class="text-cyan-400 ml-1">MENARGUEZ</span>
         </div>
-        <div class="hidden md:flex items-center space-x-8 text-xs uppercase tracking-[0.2em]">
+        
+        <div class="hidden lg:flex items-center space-x-8 text-xs uppercase tracking-[0.2em]">
             <a href="#sessions" class="hover:text-cyan-400 transition">Recording</a>
             <a href="#listen" class="hover:text-cyan-400 transition">Listen</a>
             <a href="#reviews" class="hover:text-cyan-400 transition">Reviews</a>
             <a href="#lessons" class="hover:text-cyan-400 transition">Lessons</a>
             <a href="#about" class="hover:text-cyan-400 transition">About</a>
-            <a href="#contact" class="bg-cyan-500 text-black px-5 py-2.5 font-bold hover:bg-white transition ml-4">
-                Hire Me
-            </a>
+            <a href="#contact" class="bg-cyan-500 text-black px-5 py-2.5 font-bold hover:bg-white transition ml-4">Hire Me</a>
         </div>
+
+        <button id="menu-toggle" class="lg:hidden text-white flex flex-col gap-1.5 p-2">
+            <span class="w-6 h-px bg-white"></span>
+            <span class="w-6 h-px bg-white"></span>
+            <span class="w-6 h-px bg-white"></span>
+        </button>
+    </div>
+
+    <div id="mobile-menu" class="fixed inset-0 bg-black z-[99] flex flex-col items-center justify-center space-y-8 text-lg uppercase tracking-widest lg:hidden">
+        <button id="menu-close" class="absolute top-8 right-8 text-gray-500 text-xs">Close ✕</button>
+        <a href="#sessions" class="mobile-link hover:text-cyan-400 transition">Recording</a>
+        <a href="#listen" class="mobile-link hover:text-cyan-400 transition">Listen</a>
+        <a href="#reviews" class="mobile-link hover:text-cyan-400 transition">Reviews</a>
+        <a href="#lessons" class="mobile-link hover:text-cyan-400 transition">Lessons</a>
+        <a href="#about" class="mobile-link hover:text-cyan-400 transition">About</a>
+        <a href="#contact" class="mobile-link bg-cyan-500 text-black px-8 py-4 font-bold">Hire Me</a>
     </div>
 </nav>
 
 <header class="parallax-section min-h-screen flex items-center justify-center">
-    <div class="parallax-layer" style="background-image: url('img/drums-pov.JPEG');"></div>
+    <div class="parallax-layer" style="background-image: url('img/drums-pov.jpg');"></div>
     <div class="overlay-dark"></div>
     <div class="relative z-10 text-center px-6 py-20">
         <h1 class="serif text-4xl md:text-8xl mb-8 italic text-white drop-shadow-[0_4px_10px_rgba(0,0,0,1)] leading-tight">
@@ -189,7 +235,7 @@
 </header>
 
 <section id="sessions" class="parallax-section py-32 px-6">
-    <div class="parallax-layer" style="background-image: url('img/rack.jpeg');"></div>
+    <div class="parallax-layer" style="background-image: url('img/rack.jpg');"></div>
     <div class="overlay-dark" style="background: rgba(0,0,0,0.85);"></div>
     <div class="relative z-10 max-w-7xl mx-auto">
         <div class="flex flex-col md:flex-row justify-between mb-16 items-start">
@@ -411,7 +457,7 @@
 </section>
 
 <section id="about" class="parallax-section py-32 px-6">
-    <div class="parallax-layer" style="background-image: url('img/Me.JPEG');"></div>
+    <div class="parallax-layer" style="background-image: url('img/me.jpg');"></div>
     <div class="overlay-light"></div>
     <div class="relative z-10 max-w-5xl mx-auto text-center">
         <span class="block text-[10px] uppercase tracking-[0.4em] text-cyan-600 mb-6 font-bold">Learn. Improve. Expand.</span>
@@ -526,6 +572,26 @@
             toggleBtn.innerText = "Pause";
         }
     });
+
+    // Mobile Menu Toggle
+const menuBtn = document.getElementById('menu-toggle');
+const closeBtn = document.getElementById('menu-close');
+const mobileMenu = document.getElementById('mobile-menu');
+const navLinks = document.querySelectorAll('.mobile-link');
+
+function toggleNav() {
+    mobileMenu.classList.toggle('active');
+    // Prevent scrolling when menu is open
+    document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : 'auto';
+}
+
+menuBtn.addEventListener('click', toggleNav);
+closeBtn.addEventListener('click', toggleNav);
+
+// Close menu when a link is clicked
+navLinks.forEach(link => {
+    link.addEventListener('click', toggleNav);
+});
 </script>
 </body>
 </html>

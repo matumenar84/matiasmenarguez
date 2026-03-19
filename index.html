@@ -5,6 +5,12 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,600;1,700&family=Tenor+Sans&display=swap" rel="stylesheet">
     
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <link rel="icon" type="image/png" href="favicon.ico">
+    <link rel="apple-touch-icon" href="favicon.ico">
+
     <style>
         body { 
             font-family: 'Tenor Sans', sans-serif; 
@@ -13,9 +19,9 @@
             scroll-behavior: smooth;
             line-height: 1.7;
             letter-spacing: 0.03em;
+            overflow-x: hidden; /* Prevents mobile horizontal scroll */
         }
         
-        /* The Header Font: Sharp, italic, and prestigious */
         .serif { 
             font-family: 'Cormorant Garamond', serif; 
             font-style: italic;
@@ -23,7 +29,6 @@
             letter-spacing: -0.01em;
         }
         
-        /* Navigation & Buttons: Keeping them ultra-clean */
         nav, button, .tracking-widest {
             font-family: 'Tenor Sans', sans-serif;
             letter-spacing: 0.2em;
@@ -33,61 +38,119 @@
         .accent-border { border-left: 2px solid #00D4FF; }
         .gradient-overlay { background: linear-gradient(0deg, rgba(10,10,10,1) 0%, rgba(10,10,10,0.4) 100%); }
 
-/* Container that holds the "window" */
-.parallax-section {
-    position: relative;
-    overflow: hidden;
-    z-index: 1; /* Creates a new stacking context so -2 stays inside this section */
-    background-color: #000; /* Fallback if image fails */
-}
+        .parallax-section {
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            background-color: #000;
+        }
 
-/* The Background Image Layer */
-.parallax-layer {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    z-index: -2; /* Deepest layer */
-}
+        .parallax-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: -2;
+        }
 
-/* Enable Fixed Attachment ONLY for Desktop */
-@media (min-width: 1024px) {
-    .parallax-layer {
-        background-attachment: fixed;
-    }
-}
+        @media (min-width: 1024px) {
+            .parallax-layer {
+                background-attachment: fixed;
+            }
+        }
 
-/* Dark Overlay Layer for Hero/Sessions */
-.overlay-dark {
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.65);
-    backdrop-filter: blur(2px);
-    z-index: -1; /* Between image and text */
-}
+        .overlay-dark {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(2px);
+            z-index: -1;
+        }
 
-/* Light Overlay Layer for About */
-.overlay-light {
-    position: absolute;
-    inset: 0;
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(2px);
-    z-index: -1;
-}
+        .overlay-light {
+            position: absolute;
+            inset: 0;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(2px);
+            z-index: -1;
+        }
+
+        .swiper-wrapper {
+            display: flex;
+            align-items: stretch;
+        }
+
+        .swiper-slide {
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.5s ease;
+            opacity: 0.2;
+            transform: scale(0.85);
+            filter: blur(4px);
+        }
+
+        .swiper-slide-active {
+            opacity: 1 !important;
+            transform: scale(1.05) !important;
+            filter: blur(0) !important;
+            z-index: 10;
+        }
+
+        .review-inner {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100% !important; 
+            width: 100%;
+        }
+
+        .carousel-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-top: 40px;
+            position: relative;
+            z-index: 20;
+        }
+
+        .nav-btn, .pause-btn {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.1);
+            color: white;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 50%;
+            font-size: 0.8rem;
+        }
+
+        .pause-btn {
+            width: 100px;
+            border-radius: 30px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 10px;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body class="antialiased">
 
-    <nav class="fixed w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
+<nav class="fixed w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
     <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
         <div class="text-xl font-bold tracking-tighter leading-none flex items-center">
             MATIAS <span class="text-cyan-400 ml-1">MENARGUEZ</span>
         </div>
-        
         <div class="hidden md:flex items-center space-x-8 text-xs uppercase tracking-[0.2em]">
             <a href="#sessions" class="hover:text-cyan-400 transition">Recording</a>
             <a href="#listen" class="hover:text-cyan-400 transition">Listen</a>
@@ -101,21 +164,16 @@
     </div>
 </nav>
 
-    <header class="parallax-section min-h-screen flex items-center justify-center">
+<header class="parallax-section min-h-screen flex items-center justify-center">
     <div class="parallax-layer" style="background-image: url('img/drums-pov.JPEG');"></div>
     <div class="overlay-dark"></div>
-    <div class="relative z-10 text-center px-6">
-        </div>
-
     <div class="relative z-10 text-center px-6 py-20">
         <h1 class="serif text-4xl md:text-8xl mb-8 italic text-white drop-shadow-[0_4px_10px_rgba(0,0,0,1)] leading-tight">
             Analog Soul. Digital Precision.
         </h1>
-        
         <p class="text-lg md:text-2xl font-light mb-16 max-w-2xl mx-auto text-gray-300 italic">
             World-class session drums & mixing from my professional studio in Mount Olive, NJ.
         </p>
-        
         <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6">
             <a href="#contact" class="w-full md:w-auto px-10 py-5 bg-white text-black font-bold uppercase tracking-[0.2em] hover:bg-cyan-400 transition-all text-center">
                 Start A Project
@@ -130,17 +188,13 @@
     </div>
 </header>
 
-    <section id="sessions" class="parallax-section py-32 px-6">
+<section id="sessions" class="parallax-section py-32 px-6">
     <div class="parallax-layer" style="background-image: url('img/rack.jpeg');"></div>
-    <div class="overlay-dark" style="background: rgba(0,0,0,0.85);"></div> <div class="relative z-10 max-w-7xl mx-auto">
-        </div>
-    
+    <div class="overlay-dark" style="background: rgba(0,0,0,0.85);"></div>
     <div class="relative z-10 max-w-7xl mx-auto">
         <div class="flex flex-col md:flex-row justify-between mb-16 items-start">
             <h2 class="serif text-4xl md:text-6xl italic mb-6 md:mb-0 text-white">The Studio Specs</h2>
-            
         </div>
-
         <div class="grid md:grid-cols-2 gap-16">
             <div>
                 <h4 class="text-cyan-400 uppercase tracking-widest text-sm font-bold mb-6">The Hardware</h4>
@@ -164,141 +218,167 @@
     </div>
 </section>
 
-    <section id="listen" class="py-24 bg-black px-6 border-t border-white/5">
+<section id="listen" class="py-24 bg-black px-6 border-t border-white/5">
     <div class="max-w-7xl mx-auto">
         <h2 class="serif text-4xl md:text-6xl italic mb-16 text-center text-white">Selected Works</h2>
-        
         <div class="grid md:grid-cols-3 gap-12">
-            
             <div class="flex flex-col">
                 <h4 class="text-cyan-400 uppercase tracking-widest text-[10px] font-bold mb-6 text-center md:text-left">Session Drums</h4>
-                <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/2rPdxmddcXXQ8GB6F5w9zR?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/2rPdxmddcXXQ8GB6F5w9zR?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
                 <p class="mt-6 text-sm text-gray-400 italic leading-relaxed tracking-wide">A curated selection of international tracks featuring my session drum work.</p>
             </div>
-
             <div class="flex flex-col">
                 <h4 class="text-cyan-400 uppercase tracking-widest text-[10px] font-bold mb-6 text-center md:text-left">Solo Production</h4>
-                <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/album/3z7xU39JmDIlBsidIkFpMx?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/album/3z7xU39JmDIlBsidIkFpMx?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
                 <p class="mt-6 text-sm text-gray-400 italic leading-relaxed tracking-wide">Compilation of self-composed, performed, and recorded works from the private archives.</p>
             </div>
-
             <div class="flex flex-col">
                 <h4 class="text-cyan-400 uppercase tracking-widest text-[10px] font-bold mb-6 text-center md:text-left">Modern Jazz Duo</h4>
-                <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/album/7JlVSPgtVbWiRnNsoY75LC?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/album/7JlVSPgtVbWiRnNsoY75LC?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
                 <p class="mt-6 text-sm text-gray-400 italic leading-relaxed tracking-wide">Latest exploration in modern jazz and improvisational duo performance.</p>
             </div>
-
         </div>
     </div>
 </section>
-    <section id="reviews" class="py-24 bg-zinc-950 px-6 border-t border-white/5">
-    <div class="max-w-6xl mx-auto">
+
+<section id="reviews" class="py-24 bg-zinc-950 px-6 border-t border-white/5">
+    <div class="max-w-7xl mx-auto">
         <h2 class="serif text-4xl md:text-6xl italic mb-16 text-center text-white">What Artists Say</h2>
-        
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            
-            <div class="p-10 border border-white/5 bg-black flex flex-col justify-between shadow-xl">
-                <div>
-                    <p class="text-cyan-400 text-3xl serif mb-4">“</p>
-                    <p class="serif text-xl italic text-gray-300 leading-relaxed">Simply excellent! Look no further than Matias.</p>
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide swiper-slide-active"> <div class="p-10 border border-white/5 bg-black flex flex-col justify-between shadow-xl h-full review-inner">
+                        <div>
+                            <p class="text-cyan-400 text-3xl serif mb-4">“</p>
+                            <p class="serif text-xl italic text-gray-300 leading-relaxed">Simply excellent! Look no further than Matias.</p>
+                        </div>
+                        <div class="mt-10 pt-6 border-t border-white/10">
+                            <p class="text-[10px] uppercase tracking-[0.3em] text-white font-bold">Julian Bradley</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="mt-10 pt-6 border-t border-white/10">
-                    <p class="text-[10px] uppercase tracking-[0.3em] text-white font-bold">Julian Bradley</p>
+                <div class="swiper-slide">
+                    <div class="p-10 border border-white/5 bg-black flex flex-col justify-between shadow-xl h-full review-inner">
+                        <div>
+                            <p class="text-cyan-400 text-3xl serif mb-4">“</p>
+                            <p class="serif text-xl italic text-gray-300 leading-relaxed">Matias is the bomb! His drums are killer and he's been incredibly patient with a DIVA in myself. Thank you so much Matias!</p>
+                        </div>
+                        <div class="mt-10 pt-6 border-t border-white/10">
+                            <p class="text-[10px] uppercase tracking-[0.3em] text-white font-bold">Josiah Mann</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="p-10 border border-white/5 bg-black flex flex-col justify-between shadow-xl h-full review-inner">
+                        <div>
+                            <p class="text-cyan-400 text-3xl serif mb-4">“</p>
+                            <p class="serif text-xl italic text-gray-300 leading-relaxed">Matias is a great player. He is a very musical drummer who is sensitive to dynamics, emotion and atmosphere.</p>
+                        </div>
+                        <div class="mt-10 pt-6 border-t border-white/10">
+                            <p class="text-[10px] uppercase tracking-[0.3em] text-white font-bold">Charles Berthoud</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="p-10 border border-white/5 bg-black flex flex-col justify-between shadow-xl h-full review-inner">
+                        <div>
+                            <p class="text-cyan-400 text-3xl serif mb-4">“</p>
+                            <p class="serif text-xl italic text-gray-300 leading-relaxed">Fantastic playing, great quality audio and mixing, and super friendly and attentive. I couldn't recommend him highly enough!</p>
+                        </div>
+                        <div class="mt-10 pt-6 border-t border-white/10">
+                            <p class="text-[10px] uppercase tracking-[0.3em] text-white font-bold">Tommy Buckley</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="p-10 border border-white/5 bg-black flex flex-col justify-between shadow-xl h-full review-inner">
+                        <div>
+                            <p class="text-cyan-400 text-3xl serif mb-4">“</p>
+                            <p class="serif text-xl italic text-gray-300 leading-relaxed">Matias always exceeds expectations and delivers top quality drum tracks for your project, taking it to the next level. A true pro.</p>
+                        </div>
+                        <div class="mt-10 pt-6 border-t border-white/10">
+                            <p class="text-[10px] uppercase tracking-[0.3em] text-white font-bold">Bav</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="p-10 border border-white/5 bg-black flex flex-col justify-between shadow-xl h-full review-inner">
+                        <div>
+                            <p class="text-cyan-400 text-3xl serif mb-4">“</p>
+                            <p class="serif text-xl italic text-gray-300 leading-relaxed">Matias delivered exactly what I asked for in less than 24 hours. When I asked him to add a small fill he delivered that promptly as well.</p>
+                        </div>
+                        <div class="mt-10 pt-6 border-t border-white/10">
+                            <p class="text-[10px] uppercase tracking-[0.3em] text-white font-bold">Michael Waite</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="p-10 border border-white/5 bg-black flex flex-col justify-between shadow-xl h-full review-inner">
+                        <div>
+                            <p class="text-cyan-400 text-3xl serif mb-4">“</p>
+                            <p class="serif text-xl italic text-gray-300 leading-relaxed">Matias is a super musician. His drum parts are in the pocket and highly creative. His tracks sound perfect. I highly recommend him!</p>
+                        </div>
+                        <div class="mt-10 pt-6 border-t border-white/10">
+                            <p class="text-[10px] uppercase tracking-[0.3em] text-white font-bold">Jeff Lopez</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="p-10 border border-white/5 bg-black flex flex-col justify-between shadow-xl h-full review-inner">
+                        <div>
+                            <p class="text-cyan-400 text-3xl serif mb-4">“</p>
+                            <p class="serif text-xl italic text-gray-300 leading-relaxed">Matias is an awesome drummer, he completely understood what the track needed and delivered quickly.</p>
+                        </div>
+                        <div class="mt-10 pt-6 border-t border-white/10">
+                            <p class="text-[10px] uppercase tracking-[0.3em] text-white font-bold">Jonny Kerry</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            <div class="p-10 border border-white/5 bg-black flex flex-col justify-between shadow-xl">
-                <div>
-                    <p class="text-cyan-400 text-3xl serif mb-4">“</p>
-                    <p class="serif text-xl italic text-gray-300 leading-relaxed">Matias is the bomb! His drums are killer and he's been incredibly patient with a DIVA in myself. Thank you so much Matias!</p>
-                </div>
-                <div class="mt-10 pt-6 border-t border-white/10">
-                    <p class="text-[10px] uppercase tracking-[0.3em] text-white font-bold">Josiah Mann</p>
-                </div>
-            </div>
-
-            <div class="p-10 border border-white/5 bg-black flex flex-col justify-between shadow-xl">
-                <div>
-                    <p class="text-cyan-400 text-3xl serif mb-4">“</p>
-                    <p class="serif text-xl italic text-gray-300 leading-relaxed">Matias is a great player. He is a very musical drummer who is sensitive to dynamics, emotion and atmosphere.</p>
-                </div>
-                <div class="mt-10 pt-6 border-t border-white/10">
-                    <p class="text-[10px] uppercase tracking-[0.3em] text-white font-bold">Charles Berthoud</p>
-                </div>
-            </div>
-
-            <div class="p-10 border border-white/5 bg-black flex flex-col justify-between shadow-xl">
-                <div>
-                    <p class="text-cyan-400 text-3xl serif mb-4">“</p>
-                    <p class="serif text-xl italic text-gray-300 leading-relaxed">Fantastic playing, great quality audio and mixing, and super friendly and attentive. I couldn't recommend him highly enough!</p>
-                </div>
-                <div class="mt-10 pt-6 border-t border-white/10">
-                    <p class="text-[10px] uppercase tracking-[0.3em] text-white font-bold">Tommy Buckley</p>
-                </div>
-            </div>
-
-            <div class="p-10 border border-white/5 bg-black flex flex-col justify-between shadow-xl">
-                <div>
-                    <p class="text-cyan-400 text-3xl serif mb-4">“</p>
-                    <p class="serif text-xl italic text-gray-300 leading-relaxed">Matias always exceeds expectations and delivers top quality drum tracks for your project, taking it to the next level. A true pro.</p>
-                </div>
-                <div class="mt-10 pt-6 border-t border-white/10">
-                    <p class="text-[10px] uppercase tracking-[0.3em] text-white font-bold">Bav</p>
-                </div>
-            </div>
-
-            <div class="p-10 border border-white/5 bg-black flex flex-col justify-between shadow-xl">
-                <div>
-                    <p class="text-cyan-400 text-3xl serif mb-4">“</p>
-                    <p class="serif text-xl italic text-gray-300 leading-relaxed">Matias delivered exactly what I asked for in less than 24 hours. When I asked him to add a small fill he delivered that promptly as well.</p>
-                </div>
-                <div class="mt-10 pt-6 border-t border-white/10">
-                    <p class="text-[10px] uppercase tracking-[0.3em] text-white font-bold">Michael Waite</p>
-                </div>
-            </div>
-
-            <div class="p-10 border border-white/5 bg-black flex flex-col justify-between shadow-xl">
-                <div>
-                    <p class="text-cyan-400 text-3xl serif mb-4">“</p>
-                    <p class="serif text-xl italic text-gray-300 leading-relaxed">Matias is a super musician. His drum parts are in the pocket and highly creative. His tracks sound perfect. I highly recommend him!</p>
-                </div>
-                <div class="mt-10 pt-6 border-t border-white/10">
-                    <p class="text-[10px] uppercase tracking-[0.3em] text-white font-bold">Jeff Lopez</p>
-                </div>
-            </div>
-
-            <div class="p-10 border border-white/5 bg-black flex flex-col justify-between shadow-xl">
-                <div>
-                    <p class="text-cyan-400 text-3xl serif mb-4">“</p>
-                    <p class="serif text-xl italic text-gray-300 leading-relaxed">Matias is an awesome drummer, he completely understood what the track needed and delivered quickly.</p>
-                </div>
-                <div class="mt-10 pt-6 border-t border-white/10">
-                    <p class="text-[10px] uppercase tracking-[0.3em] text-white font-bold">Jonny Kerry</p>
-                </div>
-            </div>
-        </div> <div class="mt-20 pt-16 border-t border-white/5 w-full flex flex-col items-center justify-center text-center">
-            <p class="text-[12px] uppercase tracking-[0.3em] text-gray-200 mb-10 block font-normal">Verified reviews via</p>
-            <div class="flex flex-col md:flex-row justify-center items-center gap-6">
-                <a href="https://soundbetter.com/profiles/55563-matias-menarguez" target="_blank" class="group flex items-center px-6 py-3 border border-white/10 hover:border-cyan-400/50 transition-all duration-300 transform hover:-translate-y-1">
-                    <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400 group-hover:text-cyan-400">SoundBetter</span>
-                    <span class="ml-3 text-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
-                </a>
-                <a href="https://www.airgigs.com/user/Matumenar" target="_blank" class="group flex items-center px-6 py-3 border border-white/10 hover:border-cyan-400/50 transition-all duration-300 transform hover:-translate-y-1">
-                    <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400 group-hover:text-cyan-400">AirGigs</span>
-                    <span class="ml-3 text-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
-                </a>
+            <div class="carousel-nav">
+                <button class="nav-btn swiper-prev">←</button>
+                <button class="pause-btn" id="swiper-toggle">Pause</button>
+                <button class="nav-btn swiper-next">→</button>
             </div>
         </div>
-    </div> </section>
-   <section id="lessons" class="py-24 bg-cyan-500 text-black px-6">
+        
+        <div class="flex flex-col md:flex-row justify-center items-center gap-12 mt-12">
+            <a href="https://soundbetter.com/profiles/55563-matias-menarguez" target="_blank" class="group relative flex flex-col items-center px-10 py-6 border border-white/10 hover:border-cyan-400/50 transition-all duration-300 transform hover:-translate-y-1 bg-black/20 w-64">
+                <div class="absolute -top-3 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-zinc-900 border border-cyan-500/30 px-3 py-1 rounded-full whitespace-nowrap shadow-xl">
+                    <span class="text-cyan-400 text-[8px]">●</span>
+                    <span class="text-[8px] font-bold uppercase tracking-[0.2em] text-cyan-400/90">120+ Verified Reviews</span>
+                </div>
+                <div class="flex items-center">
+                    <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400 group-hover:text-cyan-400">SoundBetter</span>
+                    <span class="ml-3 text-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                </div>
+                <div class="mt-2 text-[8px] text-yellow-500/80 flex gap-0.5">
+                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                </div>
+            </a>
+            <a href="https://www.airgigs.com/user/Matumenar" target="_blank" class="group relative flex flex-col items-center px-10 py-6 border border-white/10 hover:border-cyan-400/50 transition-all duration-300 transform hover:-translate-y-1 bg-black/20 w-64">
+                <div class="absolute -top-3 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-zinc-900 border border-orange-500/30 px-3 py-1 rounded-full whitespace-nowrap shadow-xl">
+                    <span class="text-orange-500 text-[8px]">★</span>
+                    <span class="text-[8px] font-bold uppercase tracking-[0.2em] text-orange-500/90">Top Rated Studio Pro</span>
+                </div>
+                <div class="flex items-center">
+                    <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400 group-hover:text-cyan-400">AirGigs</span>
+                    <span class="ml-3 text-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                </div>
+                <div class="mt-2 text-[8px] text-yellow-500/80 flex gap-0.5">
+                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<section id="lessons" class="py-24 bg-cyan-500 text-black px-6">
     <div class="max-w-7xl mx-auto text-center">
         <h2 class="serif text-5xl md:text-7xl italic mb-4 text-zinc-900">Private Lessons</h2>
         <p class="text-xl max-w-2xl mx-auto mb-16 opacity-80 font-medium">
             1-on-1 coaching in Mount Olive or via Zoom. Technique, musicality, and the "IT" of the modern drummer.
         </p>
-
         <div class="grid md:grid-cols-3 gap-8 items-stretch">
-            
             <div class="bg-white/90 p-8 shadow-xl flex flex-col h-full transform hover:-translate-y-1 transition">
                 <span class="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2 block">New Students</span>
                 <h3 class="serif text-2xl italic mb-4 text-zinc-900">The Soundcheck</h3>
@@ -306,31 +386,19 @@
                 <div class="text-2xl font-bold mb-8 italic">FREE</div>
                 <a href="https://calendly.com/matumenar/welcome-class" class="block w-full py-4 bg-zinc-900 text-white font-bold uppercase text-xs tracking-widest hover:bg-cyan-600 transition">Book Free Intro</a>
             </div>
-
             <div class="bg-zinc-900 p-10 shadow-[0_20px_50px_rgba(0,0,0,0.3)] flex flex-col h-full transform scale-105 z-10 transition border border-white/5 relative">
-    
-    <div class="absolute -top-3 left-1/2 -translate-x-1/2">
-        <span class="bg-cyan-500 text-black text-[10px] font-bold py-1 px-4 uppercase tracking-[0.2em] shadow-lg">
-            Best Value
-        </span>
-    </div>
-
-    <h3 class="serif text-3xl italic mb-4 mt-4 text-white">Weekly Residency</h3>
-    <p class="text-sm text-gray-400 mb-8 flex-grow leading-relaxed">
-        Four 60-minute lessons per month. One fixed time slot per week, reserved exclusively for you.
-    </p>
-    
-    <div class="mb-8">
-        <span class="text-4xl font-bold italic text-white">$270</span>
-        <span class="text-gray-500 text-sm italic">/ month</span>
-        <p class="text-[10px] text-cyan-400 font-bold mt-2 uppercase tracking-[0.2em]">Save $50 Monthly</p>
-    </div>
-
-    <a href="https://buy.stripe.com/3cI9AVgq2aMP5WVcZQbwk02" class="block w-full py-4 bg-cyan-500 text-black font-bold uppercase text-xs tracking-[0.2em] hover:bg-white transition">
-        Reserve My Slot
-    </a>
-</div>
-
+                <div class="absolute -top-3 left-1/2 -translate-x-1/2">
+                    <span class="bg-cyan-500 text-black text-[10px] font-bold py-1 px-4 uppercase tracking-[0.2em] shadow-lg">Best Value</span>
+                </div>
+                <h3 class="serif text-3xl italic mb-4 mt-4 text-white">Weekly Residency</h3>
+                <p class="text-sm text-gray-400 mb-8 flex-grow leading-relaxed">Four 60-minute lessons per month. One fixed time slot per week, reserved exclusively for you.</p>
+                <div class="mb-8">
+                    <span class="text-4xl font-bold italic text-white">$270</span>
+                    <span class="text-gray-500 text-sm italic">/ month</span>
+                    <p class="text-[10px] text-cyan-400 font-bold mt-2 uppercase tracking-[0.2em]">Save $50 Monthly</p>
+                </div>
+                <a href="https://buy.stripe.com/3cI9AVgq2aMP5WVcZQbwk02" class="block w-full py-4 bg-cyan-500 text-black font-bold uppercase text-xs tracking-[0.2em] hover:bg-white transition">Reserve My Slot</a>
+            </div>
             <div class="bg-white/90 p-8 shadow-xl flex flex-col h-full transform hover:-translate-y-1 transition">
                 <span class="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2 block">Existing Students</span>
                 <h3 class="serif text-2xl italic mb-4 text-zinc-900">Single Session</h3>
@@ -338,135 +406,126 @@
                 <div class="text-2xl font-bold mb-8 italic">$80</div>
                 <a href="https://buy.stripe.com/28E5kFa1EdZ170Z0d4bwk01" class="block w-full py-4 border-2 border-zinc-900 text-zinc-900 font-bold uppercase text-xs tracking-widest hover:bg-zinc-900 hover:text-white transition">Pay & Schedule</a>
             </div>
-     
-        </div>
-    </div>
-    </section>
-    <section id="about" class="parallax-section py-32 px-6">
-    <div class="parallax-layer" style="background-image: url('img/Me.JPEG');"></div>
-    <div class="overlay-light"></div>
-    <div class="relative z-10 max-w-5xl mx-auto text-center text-black">
-        </div>
-
-    <div class="relative z-10 max-w-5xl mx-auto text-center">
-        <span class="block text-[10px] uppercase tracking-[0.4em] text-cyan-600 mb-6 font-bold">
-            Learn. Improve. Expand.
-        </span>
-
-        <h2 class="serif text-5xl md:text-6xl italic mb-12 text-zinc-900">21 Years of Rhythm.</h2>
-        
-        <p class="text-xl md:text-2xl leading-relaxed font-light mb-8 italic text-zinc-800">
-            From a prestigious scholarship at EMBA in Buenos Aires to International Jazz Festivals in Argentina, Belize and being a busy session drummer.
-        </p>
-        
-        <p class="text-lg text-gray-700 mb-12 max-w-3xl mx-auto leading-loose">
-            Having toured through Chile, Argentina, and the United States with diverse musical projects, I have lived at the intersection of performance and production. My approach is shaped by years of experience in iconic theaters and thousands of hours in venues and studio.
-        </p>
-        
-        <div class="pt-6">
-            <a href="bio.html" class="inline-block text-cyan-600 font-bold border-b-2 border-cyan-600/20 hover:border-cyan-600 hover:text-black transition-all duration-300 uppercase tracking-widest text-xs pb-1">
-    Read Full Career Bio
-</a>
         </div>
     </div>
 </section>
 
-    <section id="contact" class="py-24 px-6 bg-zinc-900">
-        <div class="max-w-3xl mx-auto">
-            <h2 class="text-center serif text-4xl md:text-5xl italic mb-12 text-white">Start Your Project</h2>
-            
-            <form name="contact" method="POST" id="contact-form" data-netlify="true" class="space-y-6">
-                <input type="hidden" name="form-name" value="contact">
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="flex flex-col">
-                        <label class="text-xs uppercase tracking-widest text-gray-500 mb-2">Name</label>
-                        <input type="text" name="name" required class="bg-black border border-white/10 p-4 focus:border-cyan-400 outline-none text-white transition">
-                    </div>
-                    <div class="flex flex-col">
-                        <label class="text-xs uppercase tracking-widest text-gray-500 mb-2">Email</label>
-                        <input type="email" name="email" required class="bg-black border border-white/10 p-4 focus:border-cyan-400 outline-none text-white transition">
-                    </div>
-                </div>
-
-                <div class="flex flex-col">
-                    <label class="text-xs uppercase tracking-widest text-gray-500 mb-2">Service Needed</label>
-                    <select name="service" id="service-select" required class="bg-black border border-white/10 p-4 focus:border-cyan-400 outline-none text-gray-400 transition appearance-none">
-                        <option disabled selected value="">Select a Service...</option>
-                        <option value="Drums">Remote Drum Recording</option>
-                        <option value="Mixing">Mixing & Production</option>
-                        <option value="Lessons">Drum Lessons (NJ / Zoom)</option>
-                    </select>
-                </div>
-
-                <div class="flex flex-col">
-                    <label id="message-label" class="text-xs uppercase tracking-widest text-gray-500 mb-2">Project Brief</label>
-                    <textarea id="message-area" name="message" rows="5" placeholder="Tell me about your song (Tempo, Vibe, Reference tracks...)" class="bg-black border border-white/10 p-4 focus:border-cyan-400 outline-none text-white transition"></textarea>
-                </div>
-
-                <button type="submit" class="w-full bg-cyan-500 text-black py-5 font-bold uppercase tracking-widest hover:bg-white transition shadow-lg">
-                    Submit Project Brief
-                </button>
-            </form>
+<section id="about" class="parallax-section py-32 px-6">
+    <div class="parallax-layer" style="background-image: url('img/Me.JPEG');"></div>
+    <div class="overlay-light"></div>
+    <div class="relative z-10 max-w-5xl mx-auto text-center">
+        <span class="block text-[10px] uppercase tracking-[0.4em] text-cyan-600 mb-6 font-bold">Learn. Improve. Expand.</span>
+        <h2 class="serif text-5xl md:text-6xl italic mb-12 text-zinc-900">21 Years of Rhythm.</h2>
+        <p class="text-xl md:text-2xl leading-relaxed font-light mb-8 italic text-zinc-800">
+            From a prestigious scholarship at EMBA in Buenos Aires to International Jazz Festivals in Argentina, Belize and being a busy session drummer.
+        </p>
+        <p class="text-lg text-gray-700 mb-12 max-w-3xl mx-auto leading-loose">
+            Having toured through Chile, Argentina, and the United States with diverse musical projects, I have lived at the intersection of performance and production.
+        </p>
+        <div class="pt-6">
+            <a href="bio.html" class="inline-block text-cyan-600 font-bold border-b-2 border-cyan-600/20 hover:border-cyan-600 hover:text-black transition-all duration-300 uppercase tracking-widest text-xs pb-1">Read Full Career Bio</a>
         </div>
-    </section>
+    </div>
+</section>
 
-    <footer class="py-12 text-center text-gray-600 text-sm border-t border-white/5">
-        &copy; 2026 Matias Menarguez. Located in Mount Olive, NJ.
-    </footer>
+<section id="contact" class="py-24 px-6 bg-zinc-900">
+    <div class="max-w-3xl mx-auto">
+        <h2 class="text-center serif text-4xl md:text-5xl italic mb-12 text-white">Start Your Project</h2>
+        <form name="contact" method="POST" id="contact-form" data-netlify="true" class="space-y-6">
+            <input type="hidden" name="form-name" value="contact">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="flex flex-col">
+                    <label class="text-xs uppercase tracking-widest text-gray-500 mb-2">Name</label>
+                    <input type="text" name="name" required class="bg-black border border-white/10 p-4 focus:border-cyan-400 outline-none text-white transition">
+                </div>
+                <div class="flex flex-col">
+                    <label class="text-xs uppercase tracking-widest text-gray-500 mb-2">Email</label>
+                    <input type="email" name="email" required class="bg-black border border-white/10 p-4 focus:border-cyan-400 outline-none text-white transition">
+                </div>
+            </div>
+            <div class="flex flex-col">
+                <label class="text-xs uppercase tracking-widest text-gray-500 mb-2">Service Needed</label>
+                <select name="service" id="service-select" required class="bg-black border border-white/10 p-4 focus:border-cyan-400 outline-none text-gray-400 transition appearance-none">
+                    <option disabled selected value="">Select a Service...</option>
+                    <option value="Drums">Remote Drum Recording</option>
+                    <option value="Mixing">Mixing & Production</option>
+                    <option value="Lessons">Drum Lessons (NJ / Zoom)</option>
+                </select>
+            </div>
+            <div class="flex flex-col">
+                <label id="message-label" class="text-xs uppercase tracking-widest text-gray-500 mb-2">Project Brief</label>
+                <textarea id="message-area" name="message" rows="5" placeholder="Tell me about your song..." class="bg-black border border-white/10 p-4 focus:border-cyan-400 outline-none text-white transition"></textarea>
+            </div>
+            <button type="submit" class="w-full bg-cyan-500 text-black py-5 font-bold uppercase tracking-widest hover:bg-white transition shadow-lg">Submit Project Brief</button>
+        </form>
+    </div>
+</section>
 
-    <script>
-        // 1. SMOOTH SCROLL LOGIC
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    window.scrollTo({
-                        top: target.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
+<footer class="py-12 text-center text-gray-600 text-sm border-t border-white/5">
+    © 2026 Matias Menarguez. Located in Mount Olive, NJ.
+</footer>
 
-        // 2. DYNAMIC PLACEHOLDERS
-        const serviceSelect = document.getElementById('service-select');
-        const messageLabel = document.getElementById('message-label');
-        const messageArea = document.getElementById('message-area');
-
-        const placeholderMap = {
-            'Drums': { label: 'Session Details', placeholder: 'BPM, Vibe/Reference tracks, and song count.' },
-            'Mixing': { label: 'Mixing Project Brief', placeholder: 'Number of stems, genre, and vision. Link to a demo if possible.' },
-            'Lessons': { label: 'Student Information', placeholder: 'Age, skill level, and goals (Technique, Jazz, etc.).' }
-        };
-
-        serviceSelect.addEventListener('change', (e) => {
-            const selection = e.target.value;
-            if (placeholderMap[selection]) {
-                messageLabel.innerText = placeholderMap[selection].label;
-                messageArea.placeholder = placeholderMap[selection].placeholder;
+<script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
             }
         });
+    });
 
-        // 3. THE "SMART REDIRECT"
-        const contactForm = document.getElementById('contact-form');
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const formData = new FormData(contactForm);
-            const serviceValue = formData.get('service');
+    const serviceSelect = document.getElementById('service-select');
+    const messageLabel = document.getElementById('message-label');
+    const messageArea = document.getElementById('message-area');
+    const placeholderMap = {
+        'Drums': { label: 'Session Details', placeholder: 'BPM, Vibe/Reference tracks, and song count.' },
+        'Mixing': { label: 'Mixing Project Brief', placeholder: 'Number of stems, genre, and vision.' },
+        'Lessons': { label: 'Student Information', placeholder: 'Age, skill level, and goals.' }
+    };
 
-            fetch("/", {
-                method: "POST",
-                headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                body: new URLSearchParams(formData).toString(),
-            })
-            .then(() => {
-                // Sends the user to success.html with the service type in the URL
-                window.location.href = `success.html?type=${serviceValue}`;
-            })
-            .catch((error) => alert(error));
-        });
-    </script>
+    serviceSelect.addEventListener('change', (e) => {
+        const selection = e.target.value;
+        if (placeholderMap[selection]) {
+            messageLabel.innerText = placeholderMap[selection].label;
+            messageArea.placeholder = placeholderMap[selection].placeholder;
+        }
+    });
+
+    const contactForm = document.getElementById('contact-form');
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const formData = new FormData(contactForm);
+        fetch("/", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: new URLSearchParams(formData).toString(),
+        }).then(() => {
+            window.location.href = `success.html?type=${formData.get('service')}`;
+        }).catch((error) => alert(error));
+    });
+
+    const swiper = new Swiper('.mySwiper', {
+        loop: true,
+        centeredSlides: true,
+        slidesPerView: 1,
+        speed: 800,
+        autoplay: { delay: 5000, disableOnInteraction: false },
+        navigation: { nextEl: '.swiper-next', prevEl: '.swiper-prev' },
+        breakpoints: { 768: { slidesPerView: 3 } }
+    });
+
+    const toggleBtn = document.getElementById('swiper-toggle');
+    toggleBtn.addEventListener('click', () => {
+        if (swiper.autoplay.running) {
+            swiper.autoplay.stop();
+            toggleBtn.innerText = "Play";
+        } else {
+            swiper.autoplay.start();
+            toggleBtn.innerText = "Pause";
+        }
+    });
+</script>
 </body>
 </html>

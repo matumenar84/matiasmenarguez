@@ -1,597 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Matias Menarguez | Pro Drums & Mixing | Mount Olive, NJ</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,600;1,700&family=Tenor+Sans&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-    <link rel="icon" type="image/png" href="favicon.ico">
-    <link rel="apple-touch-icon" href="favicon.ico">
-
-    <style>
-    body { 
-        font-family: 'Tenor Sans', sans-serif; 
-        background-color: #0a0a0a; 
-        color: #d1d1d1; 
-        scroll-behavior: smooth;
-        line-height: 1.7;
-        letter-spacing: 0.03em;
-        overflow-x: hidden; /* Prevents mobile horizontal scroll */
-    }
-    
-    .serif { 
-        font-family: 'Cormorant Garamond', serif; 
-        font-style: italic;
-        font-weight: 600;
-        letter-spacing: -0.01em;
-    }
-    
-    nav, button, .tracking-widest {
-        font-family: 'Tenor Sans', sans-serif;
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-    }
-    
-    .accent-border { border-left: 2px solid #00D4FF; }
-    .gradient-overlay { background: linear-gradient(0deg, rgba(10,10,10,1) 0%, rgba(10,10,10,0.4) 100%); }
-
-    /* --- PARALLAX ENGINE --- */
-    .parallax-section {
-        position: relative;
-        overflow: hidden;
-        z-index: 1; /* Container staging */
-        background-color: #000;
-    }
-
-    .parallax-layer {
-        position: absolute;
-        inset: 0;
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        z-index: -2; /* Keeps image behind everything */
-    }
-
-    /* Desktop Only Parallax */
-    @media (min-width: 1024px) {
-        .parallax-layer {
-            background-attachment: fixed;
-        }
-        .parallax-section {
-            margin-top: -1px;
-            padding-top: calc(80px + 1px);
-        }
-    }
-
-    /* --- MOBILE MENU & FIXES --- */
-    #mobile-menu {
-        position: fixed;
-        inset: 0;
-        background: #000;
-        z-index: 1000;
-        transition: transform 0.3s ease-in-out;
-        transform: translateX(100%);
-        display: flex; /* Always flex but off-screen */
-    }
-    
-    #mobile-menu.open {
-        transform: translateX(0);
-    }
-
-    @media (max-width: 768px) {
-        /* Fix Form Zoom */
-        input, textarea, select {
-            font-size: 16px !important;
-        }
-        /* Mobile Section Spacing (No negative margin needed) */
-        .parallax-section {
-            padding-top: 80px;
-        }
-    }
-
-    /* --- OVERLAYS --- */
-    .overlay-dark {
-        position: absolute;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.65);
-        backdrop-filter: blur(2px);
-        z-index: -1; /* Between image and content */
-    }
-
-    .overlay-light {
-        position: absolute;
-        inset: 0;
-        background: rgba(255, 255, 255, 0.85);
-        backdrop-filter: blur(2px);
-        z-index: -1;
-    }
-
-    /* --- REVIEWS SWIPER --- */
-    .swiper-wrapper {
-        display: flex;
-        align-items: stretch;
-    }
-
-    .swiper-slide {
-        height: auto;
-        display: flex;
-        flex-direction: column;
-        transition: all 0.5s ease;
-        opacity: 0.2;
-        transform: scale(0.85);
-        filter: blur(4px);
-    }
-
-    .swiper-slide-active {
-        opacity: 1 !important;
-        transform: scale(1.05) !important;
-        filter: blur(0) !important;
-        z-index: 10;
-    }
-
-    .review-inner {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        height: 100% !important; 
-        width: 100%;
-    }
-
-    .carousel-nav {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 15px;
-        margin-top: 40px;
-        position: relative;
-        z-index: 20;
-    }
-
-    .nav-btn, .pause-btn {
-        background: transparent;
-        border: 1px solid rgba(255,255,255,0.1);
-        color: white;
-        width: 50px;
-        height: 50px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        border-radius: 50%;
-        font-size: 0.8rem;
-    }
-
-    .pause-btn {
-        width: 100px;
-        border-radius: 30px;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        font-size: 10px;
-        font-weight: bold;
-    }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y1GDD7NSXY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Y1GDD7NSXY');
+  </script>
+  <title>Music Lessons in Mount Olive, NJ | Matias Menarguez Music Studio</title>
+  <meta name="description" content="Drum lessons, beginner piano lessons, and a professional recording studio in Mount Olive, NJ. Free 30-minute introductory lesson with Matias Menarguez.">
+  <link rel="canonical" href="https://www.matiasmenarguez.com/">
+  <meta property="og:title" content="Matias Menarguez Music Studio">
+  <meta property="og:description" content="Drum lessons, beginner piano lessons, and professional recording services in Mount Olive, NJ.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.matiasmenarguez.com/">
+  <meta property="og:image" content="https://www.matiasmenarguez.com/img/studio%201.JPEG">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,600;1,700&family=Inter:wght@400;500;650;700;800;850&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/styles.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": ["MusicSchool", "LocalBusiness"],
+    "name": "Matias Menarguez Music Studio",
+    "url": "https://www.matiasmenarguez.com/",
+    "image": "https://www.matiasmenarguez.com/img/studio%201.JPEG",
+    "telephone": "+15512357682",
+    "email": "matumenar@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Mount Olive",
+      "addressRegion": "NJ",
+      "addressCountry": "US"
+    },
+    "areaServed": ["Mount Olive NJ", "Hackettstown NJ", "Budd Lake NJ", "Flanders NJ", "Netcong NJ", "Long Valley NJ", "Chester NJ", "Roxbury NJ"],
+    "priceRange": "$$",
+    "sameAs": [
+      "https://www.instagram.com/matumenar/",
+      "https://soundbetter.com/profiles/55563-matias-menarguez",
+      "https://www.airgigs.com/user/Matumenar"
+    ],
+    "makesOffer": [
+      { "@type": "Offer", "name": "Free 30-minute introductory lesson", "itemOffered": { "@type": "Service", "name": "Music lesson consultation" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Drum lessons" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Beginner piano lessons" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Recording, mixing, and music production" } }
+    ]
+  }
+  </script>
 </head>
-<body class="antialiased">
-
-<nav class="fixed w-full z-[100] bg-black/80 backdrop-blur-md border-b border-white/10">
-    <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
-        <div class="text-xl font-bold tracking-tighter leading-none flex items-center">
-            MATIAS <span class="text-cyan-400 ml-1">MENARGUEZ</span>
-        </div>
-        
-        <div class="hidden lg:flex items-center space-x-8 text-xs uppercase tracking-[0.2em]">
-            <a href="#sessions" class="hover:text-cyan-400 transition">Recording</a>
-            <a href="#listen" class="hover:text-cyan-400 transition">Listen</a>
-            <a href="#reviews" class="hover:text-cyan-400 transition">Reviews</a>
-            <a href="#lessons" class="hover:text-cyan-400 transition">Lessons</a>
-            <a href="#about" class="hover:text-cyan-400 transition">About</a>
-            <a href="#contact" class="bg-cyan-500 text-black px-5 py-2.5 font-bold hover:bg-white transition ml-4">Hire Me</a>
-        </div>
-
-        <button id="menu-toggle" class="lg:hidden text-white flex flex-col gap-1.5 p-2">
-            <span class="w-6 h-px bg-white"></span>
-            <span class="w-6 h-px bg-white"></span>
-            <span class="w-6 h-px bg-white"></span>
-        </button>
+<body>
+  <header class="site-header">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="index.html">Matias Menarguez <small>Music Studio</small></a>
+      <div class="nav-links">
+        <a href="lessons.html">Lessons</a>
+        <a href="studio.html">Recording Studio</a>
+        <a href="about.html">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" data-nav-toggle><span></span></button>
+    </nav>
+    <div class="mobile-panel" data-mobile-panel>
+      <a href="lessons.html">Lessons</a>
+      <a href="studio.html">Recording Studio</a>
+      <a href="about.html">About Matias</a>
+      <a href="#contact">Contact</a>
     </div>
+  </header>
 
-    <div id="mobile-menu" class="fixed inset-0 bg-black z-[99] flex flex-col items-center justify-center space-y-8 text-lg uppercase tracking-widest lg:hidden">
-        <button id="menu-close" class="absolute top-8 right-8 text-gray-500 text-xs">Close ✕</button>
-        <a href="#sessions" class="mobile-link hover:text-cyan-400 transition">Recording</a>
-        <a href="#listen" class="mobile-link hover:text-cyan-400 transition">Listen</a>
-        <a href="#reviews" class="mobile-link hover:text-cyan-400 transition">Reviews</a>
-        <a href="#lessons" class="mobile-link hover:text-cyan-400 transition">Lessons</a>
-        <a href="#about" class="mobile-link hover:text-cyan-400 transition">About</a>
-        <a href="#contact" class="mobile-link bg-cyan-500 text-black px-8 py-4 font-bold">Hire Me</a>
-    </div>
-</nav>
+  <main>
+    <section class="hero home-hero">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="eyebrow">Mount Olive, NJ</p>
+          <h1>Music lessons<br>in Mount Olive.</h1>
+          <p class="lead">Drum lessons for all levels, beginner piano lessons, and a free 30-minute introductory lesson for new students.</p>
+          <div class="button-row">
+            <a class="button button-primary" href="#contact">Request Free Intro</a>
+            <a class="button button-secondary" href="studio.html">Recording Studio</a>
+          </div>
+        </div>
+        <aside class="hero-card" aria-label="Lesson formats">
+          <strong>Flexible lesson formats</strong>
+          <p>Study at my home studio, at your home, or online via Zoom.</p>
+          <strong>Serving nearby towns</strong>
+          <p>Mount Olive, Hackettstown, Budd Lake, Flanders, Netcong, Long Valley, Chester, and Roxbury.</p>
+        </aside>
+      </div>
+    </section>
 
-<header class="parallax-section min-h-screen flex items-center justify-center">
-    <div class="parallax-layer" style="background-image: url('img/drums-pov.jpg');"></div>
-    <div class="overlay-dark"></div>
-    <div class="relative z-10 text-center px-6 py-20">
-        <h1 class="serif text-4xl md:text-8xl mb-8 italic text-white drop-shadow-[0_4px_10px_rgba(0,0,0,1)] leading-tight">
-            Analog Soul. Digital Precision.
-        </h1>
-        <p class="text-lg md:text-2xl font-light mb-16 max-w-2xl mx-auto text-gray-300 italic">
-            World-class session drums & mixing from my professional studio in Mount Olive, NJ.
-        </p>
-        <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6">
-            <a href="#contact" class="w-full md:w-auto px-10 py-5 bg-white text-black font-bold uppercase tracking-[0.2em] hover:bg-cyan-400 transition-all text-center">
-                Start A Project
-            </a>
-            <a href="#listen" class="w-full md:w-auto px-10 py-5 border border-white/30 text-white uppercase tracking-[0.2em] hover:bg-white/10 transition-all text-center">
-                Listen to Work
-            </a>
-            <a href="#lessons" class="w-full md:w-auto px-10 py-5 border border-white/30 text-white uppercase tracking-[0.2em] hover:bg-white/10 transition-all text-center">
-                Private Lessons
-            </a>
-        </div>
-    </div>
-</header>
+    <section class="section-tight soft">
+      <div class="wrap trust-strip" aria-label="Studio highlights">
+        <div><strong>Free intro</strong><span>30-minute first meeting for new students.</span></div>
+        <div><strong>Drums</strong><span>Ages 5 to adult, beginner to advanced.</span></div>
+        <div><strong>Piano</strong><span>Beginner piano lessons for kids and adults.</span></div>
+        <div><strong>Bilingual</strong><span>Lessons available in English or Spanish.</span></div>
+      </div>
+    </section>
 
-<section id="sessions" class="parallax-section py-32 px-6">
-    <div class="parallax-layer" style="background-image: url('img/rack.jpg');"></div>
-    <div class="overlay-dark" style="background: rgba(0,0,0,0.85);"></div>
-    <div class="relative z-10 max-w-7xl mx-auto">
-        <div class="flex flex-col md:flex-row justify-between mb-16 items-start">
-            <h2 class="serif text-4xl md:text-6xl italic mb-6 md:mb-0 text-white">The Studio Specs</h2>
+    <section class="section" id="lessons-preview">
+      <div class="wrap split">
+        <div>
+          <p class="eyebrow">Lessons</p>
+          <h2>Clear, personal instruction.</h2>
+          <p class="lead">Students learn rhythm, technique, listening, reading, feel, and confidence in a supportive environment. Parents get a clear plan, and adult students get lessons shaped around their goals.</p>
+          <ul class="list">
+            <li>Drum lessons for children, teens, and adults.</li>
+            <li>Beginner piano lessons focused on musical foundations.</li>
+            <li>Options for home studio, student home, or Zoom lessons.</li>
+          </ul>
+          <div class="button-row" style="margin-top: 28px;">
+            <a class="button button-light" href="lessons.html">Explore Lessons</a>
+          </div>
         </div>
-        <div class="grid md:grid-cols-2 gap-16">
-            <div>
-                <h4 class="text-cyan-400 uppercase tracking-widest text-sm font-bold mb-6">The Hardware</h4>
-                <ul class="space-y-4 text-gray-300">
-                    <li><span class="text-white font-bold">Kits:</span> Gretsch Round Badge 60s, Gretsch Jazz kit, vintage and modern snare drums and cymbals</li>
-                    <li><span class="text-white font-bold">Preamps:</span> 2x Kultrumm TAB V376, 4x Behringer v1273, Audient ASP880</li>
-                    <li><span class="text-white font-bold">Audio Interface:</span> Universal Audio Apollo x8p</li>
-                    <li><span class="text-white font-bold">Microphones:</span> Lauten Audio, AKG, Shure, PBM, AT, Sennheiser</li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="text-cyan-400 uppercase tracking-widest text-sm font-bold mb-6">The Software</h4>
-                <ul class="space-y-4 text-gray-300">
-                    <li><span class="text-white font-bold">DAW:</span> LUNA</li>
-                    <li><span class="text-white font-bold">Plugins:</span> Full UAD-2 Library, NEVE & API emulators, FabFilter, etc</li>
-                    <li><span class="text-white font-bold">Delivery:</span> 48kHz/24-bit WAV Multitracks</li>
-                    <li><span class="text-white font-bold">Delivery time:</span> 24 to 48 hours</li>
-                </ul>
-            </div>
+        <div class="image-panel">
+          <img src="img/drum kit 1.JPEG" alt="Drum kit set up inside Matias Menarguez Music Studio">
+          <div class="image-note">A real private teaching and recording space, not a generic lesson room.</div>
         </div>
-    </div>
-</section>
+      </div>
+    </section>
 
-<section id="listen" class="py-24 bg-black px-6 border-t border-white/5">
-    <div class="max-w-7xl mx-auto">
-        <h2 class="serif text-4xl md:text-6xl italic mb-16 text-center text-white">Selected Works</h2>
-        <div class="grid md:grid-cols-3 gap-12">
-            <div class="flex flex-col">
-                <h4 class="text-cyan-400 uppercase tracking-widest text-[10px] font-bold mb-6 text-center md:text-left">Session Drums</h4>
-                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/2rPdxmddcXXQ8GB6F5w9zR?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                <p class="mt-6 text-sm text-gray-400 italic leading-relaxed tracking-wide">A curated selection of international tracks featuring my session drum work.</p>
-            </div>
-            <div class="flex flex-col">
-                <h4 class="text-cyan-400 uppercase tracking-widest text-[10px] font-bold mb-6 text-center md:text-left">Solo Production</h4>
-                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/album/3z7xU39JmDIlBsidIkFpMx?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                <p class="mt-6 text-sm text-gray-400 italic leading-relaxed tracking-wide">Compilation of self-composed, performed, and recorded works from the private archives.</p>
-            </div>
-            <div class="flex flex-col">
-                <h4 class="text-cyan-400 uppercase tracking-widest text-[10px] font-bold mb-6 text-center md:text-left">Modern Jazz Duo</h4>
-                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/album/7JlVSPgtVbWiRnNsoY75LC?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                <p class="mt-6 text-sm text-gray-400 italic leading-relaxed tracking-wide">Latest exploration in modern jazz and improvisational duo performance.</p>
-            </div>
+    <section class="section soft">
+      <div class="wrap">
+        <p class="eyebrow">How it starts</p>
+        <h2>A simple path for new students.</h2>
+        <div class="steps">
+          <article class="step">
+            <h3>Send an inquiry</h3>
+            <p class="muted">Tell me who the lessons are for and what you are curious about.</p>
+          </article>
+          <article class="step">
+            <h3>Meet for 30 minutes</h3>
+            <p class="muted">The introductory lesson is free and helps us find the right starting point.</p>
+          </article>
+          <article class="step">
+            <h3>Choose the format</h3>
+            <p class="muted">My studio, your home, or Zoom. We keep the schedule and plan realistic.</p>
+          </article>
         </div>
-    </div>
-</section>
+      </div>
+    </section>
 
-<section id="reviews" class="py-24 bg-zinc-950 px-6 border-t border-white/5">
-    <div class="max-w-7xl mx-auto">
-        <h2 class="serif text-4xl md:text-6xl italic mb-16 text-center text-white">What Artists Say</h2>
-        <div class="swiper mySwiper">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide swiper-slide-active"> <div class="p-10 border border-white/5 bg-black flex flex-col justify-between shadow-xl h-full review-inner">
-                        <div>
-                            <p class="text-cyan-400 text-3xl serif mb-4">“</p>
-                            <p class="serif text-xl italic text-gray-300 leading-relaxed">Simply excellent! Look no further than Matias.</p>
-                        </div>
-                        <div class="mt-10 pt-6 border-t border-white/10">
-                            <p class="text-[10px] uppercase tracking-[0.3em] text-white font-bold">Julian Bradley</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="p-10 border border-white/5 bg-black flex flex-col justify-between shadow-xl h-full review-inner">
-                        <div>
-                            <p class="text-cyan-400 text-3xl serif mb-4">“</p>
-                            <p class="serif text-xl italic text-gray-300 leading-relaxed">Matias is the bomb! His drums are killer and he's been incredibly patient with a DIVA in myself. Thank you so much Matias!</p>
-                        </div>
-                        <div class="mt-10 pt-6 border-t border-white/10">
-                            <p class="text-[10px] uppercase tracking-[0.3em] text-white font-bold">Josiah Mann</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="p-10 border border-white/5 bg-black flex flex-col justify-between shadow-xl h-full review-inner">
-                        <div>
-                            <p class="text-cyan-400 text-3xl serif mb-4">“</p>
-                            <p class="serif text-xl italic text-gray-300 leading-relaxed">Matias is a great player. He is a very musical drummer who is sensitive to dynamics, emotion and atmosphere.</p>
-                        </div>
-                        <div class="mt-10 pt-6 border-t border-white/10">
-                            <p class="text-[10px] uppercase tracking-[0.3em] text-white font-bold">Charles Berthoud</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="p-10 border border-white/5 bg-black flex flex-col justify-between shadow-xl h-full review-inner">
-                        <div>
-                            <p class="text-cyan-400 text-3xl serif mb-4">“</p>
-                            <p class="serif text-xl italic text-gray-300 leading-relaxed">Fantastic playing, great quality audio and mixing, and super friendly and attentive. I couldn't recommend him highly enough!</p>
-                        </div>
-                        <div class="mt-10 pt-6 border-t border-white/10">
-                            <p class="text-[10px] uppercase tracking-[0.3em] text-white font-bold">Tommy Buckley</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="p-10 border border-white/5 bg-black flex flex-col justify-between shadow-xl h-full review-inner">
-                        <div>
-                            <p class="text-cyan-400 text-3xl serif mb-4">“</p>
-                            <p class="serif text-xl italic text-gray-300 leading-relaxed">Matias always exceeds expectations and delivers top quality drum tracks for your project, taking it to the next level. A true pro.</p>
-                        </div>
-                        <div class="mt-10 pt-6 border-t border-white/10">
-                            <p class="text-[10px] uppercase tracking-[0.3em] text-white font-bold">Bav</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="p-10 border border-white/5 bg-black flex flex-col justify-between shadow-xl h-full review-inner">
-                        <div>
-                            <p class="text-cyan-400 text-3xl serif mb-4">“</p>
-                            <p class="serif text-xl italic text-gray-300 leading-relaxed">Matias delivered exactly what I asked for in less than 24 hours. When I asked him to add a small fill he delivered that promptly as well.</p>
-                        </div>
-                        <div class="mt-10 pt-6 border-t border-white/10">
-                            <p class="text-[10px] uppercase tracking-[0.3em] text-white font-bold">Michael Waite</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="p-10 border border-white/5 bg-black flex flex-col justify-between shadow-xl h-full review-inner">
-                        <div>
-                            <p class="text-cyan-400 text-3xl serif mb-4">“</p>
-                            <p class="serif text-xl italic text-gray-300 leading-relaxed">Matias is a super musician. His drum parts are in the pocket and highly creative. His tracks sound perfect. I highly recommend him!</p>
-                        </div>
-                        <div class="mt-10 pt-6 border-t border-white/10">
-                            <p class="text-[10px] uppercase tracking-[0.3em] text-white font-bold">Jeff Lopez</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="p-10 border border-white/5 bg-black flex flex-col justify-between shadow-xl h-full review-inner">
-                        <div>
-                            <p class="text-cyan-400 text-3xl serif mb-4">“</p>
-                            <p class="serif text-xl italic text-gray-300 leading-relaxed">Matias is an awesome drummer, he completely understood what the track needed and delivered quickly.</p>
-                        </div>
-                        <div class="mt-10 pt-6 border-t border-white/10">
-                            <p class="text-[10px] uppercase tracking-[0.3em] text-white font-bold">Jonny Kerry</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-nav">
-                <button class="nav-btn swiper-prev">←</button>
-                <button class="pause-btn" id="swiper-toggle">Pause</button>
-                <button class="nav-btn swiper-next">→</button>
-            </div>
+    <section class="section">
+      <div class="wrap split reverse">
+        <div class="image-panel short">
+          <img src="img/me.jpg" alt="Matias Menarguez seated in his Mount Olive music studio">
         </div>
-        
-        <div class="flex flex-col md:flex-row justify-center items-center gap-12 mt-12">
-            <a href="https://soundbetter.com/profiles/55563-matias-menarguez" target="_blank" class="group relative flex flex-col items-center px-10 py-6 border border-white/10 hover:border-cyan-400/50 transition-all duration-300 transform hover:-translate-y-1 bg-black/20 w-64">
-                <div class="absolute -top-3 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-zinc-900 border border-cyan-500/30 px-3 py-1 rounded-full whitespace-nowrap shadow-xl">
-                    <span class="text-cyan-400 text-[8px]">●</span>
-                    <span class="text-[8px] font-bold uppercase tracking-[0.2em] text-cyan-400/90">120+ Verified Reviews</span>
-                </div>
-                <div class="flex items-center">
-                    <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400 group-hover:text-cyan-400">SoundBetter</span>
-                    <span class="ml-3 text-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
-                </div>
-                <div class="mt-2 text-[8px] text-yellow-500/80 flex gap-0.5">
-                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                </div>
-            </a>
-            <a href="https://www.airgigs.com/user/Matumenar" target="_blank" class="group relative flex flex-col items-center px-10 py-6 border border-white/10 hover:border-cyan-400/50 transition-all duration-300 transform hover:-translate-y-1 bg-black/20 w-64">
-                <div class="absolute -top-3 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-zinc-900 border border-orange-500/30 px-3 py-1 rounded-full whitespace-nowrap shadow-xl">
-                    <span class="text-orange-500 text-[8px]">★</span>
-                    <span class="text-[8px] font-bold uppercase tracking-[0.2em] text-orange-500/90">Top Rated Studio Pro</span>
-                </div>
-                <div class="flex items-center">
-                    <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400 group-hover:text-cyan-400">AirGigs</span>
-                    <span class="ml-3 text-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
-                </div>
-                <div class="mt-2 text-[8px] text-yellow-500/80 flex gap-0.5">
-                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                </div>
-            </a>
+        <div>
+          <p class="eyebrow">About Matias</p>
+          <h2>Teacher, drummer, producer.</h2>
+          <p class="lead">I bring more than two decades of private teaching, academic leadership, touring, theater, jazz performance, and studio work into every lesson.</p>
+          <p class="muted">My background includes a scholarship and professional musician degree from EMBA, international workshops and performances, hundreds of recorded drum tracks, and professional production work from my studio.</p>
+          <div class="button-row" style="margin-top: 28px;">
+            <a class="button button-light" href="about.html">About Matias</a>
+          </div>
         </div>
-    </div>
-</section>
+      </div>
+    </section>
 
-<section id="lessons" class="py-24 bg-cyan-500 text-black px-6">
-    <div class="max-w-7xl mx-auto text-center">
-        <h2 class="serif text-5xl md:text-7xl italic mb-4 text-zinc-900">Private Lessons</h2>
-        <p class="text-xl max-w-2xl mx-auto mb-16 opacity-80 font-medium">
-            1-on-1 coaching in Mount Olive or via Zoom. Technique, musicality, and the "IT" of the modern drummer.
-        </p>
-        <div class="grid md:grid-cols-3 gap-8 items-stretch">
-            <div class="bg-white/90 p-8 shadow-xl flex flex-col h-full transform hover:-translate-y-1 transition">
-                <span class="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2 block">New Students</span>
-                <h3 class="serif text-2xl italic mb-4 text-zinc-900">The Soundcheck</h3>
-                <p class="text-xs text-gray-500 mb-8 flex-grow leading-relaxed">A 25-minute free intro to discuss goals, meet each other, and start playing.</p>
-                <div class="text-2xl font-bold mb-8 italic">FREE</div>
-                <a href="https://calendly.com/matumenar/welcome-class" class="block w-full py-4 bg-zinc-900 text-white font-bold uppercase text-xs tracking-widest hover:bg-cyan-600 transition">Book Free Intro</a>
-            </div>
-            <div class="bg-zinc-900 p-10 shadow-[0_20px_50px_rgba(0,0,0,0.3)] flex flex-col h-full transform scale-105 z-10 transition border border-white/5 relative">
-                <div class="absolute -top-3 left-1/2 -translate-x-1/2">
-                    <span class="bg-cyan-500 text-black text-[10px] font-bold py-1 px-4 uppercase tracking-[0.2em] shadow-lg">Best Value</span>
-                </div>
-                <h3 class="serif text-3xl italic mb-4 mt-4 text-white">Weekly Residency</h3>
-                <p class="text-sm text-gray-400 mb-8 flex-grow leading-relaxed">Four 60-minute lessons per month. One fixed time slot per week, reserved exclusively for you.</p>
-                <div class="mb-8">
-                    <span class="text-4xl font-bold italic text-white">$270</span>
-                    <span class="text-gray-500 text-sm italic">/ month</span>
-                    <p class="text-[10px] text-cyan-400 font-bold mt-2 uppercase tracking-[0.2em]">Save $50 Monthly</p>
-                </div>
-                <a href="https://buy.stripe.com/3cI9AVgq2aMP5WVcZQbwk02" class="block w-full py-4 bg-cyan-500 text-black font-bold uppercase text-xs tracking-[0.2em] hover:bg-white transition">Reserve My Slot</a>
-            </div>
-            <div class="bg-white/90 p-8 shadow-xl flex flex-col h-full transform hover:-translate-y-1 transition">
-                <span class="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2 block">Existing Students</span>
-                <h3 class="serif text-2xl italic mb-4 text-zinc-900">Single Session</h3>
-                <p class="text-xs text-gray-500 mb-8 flex-grow leading-relaxed">One-off 60-minute intensive. Perfect for specific technical hurdles or recording prep.</p>
-                <div class="text-2xl font-bold mb-8 italic">$80</div>
-                <a href="https://buy.stripe.com/28E5kFa1EdZ170Z0d4bwk01" class="block w-full py-4 border-2 border-zinc-900 text-zinc-900 font-bold uppercase text-xs tracking-widest hover:bg-zinc-900 hover:text-white transition">Pay & Schedule</a>
-            </div>
+    <section class="section dark">
+      <div class="wrap split">
+        <div>
+          <p class="eyebrow">Recording Studio</p>
+          <h2>Session drums, recording, mixing, and production.</h2>
+          <p class="lead">The studio side of my work serves artists, bands, composers, and producers who need real drums, band recording, thoughtful production, or polished mixes.</p>
+          <div class="button-row" style="margin-top: 28px;">
+            <a class="button button-primary" href="studio.html">Visit Studio Page</a>
+          </div>
         </div>
-    </div>
-</section>
-
-<section id="about" class="parallax-section py-32 px-6">
-    <div class="parallax-layer" style="background-image: url('img/me.jpg');"></div>
-    <div class="overlay-light"></div>
-    <div class="relative z-10 max-w-5xl mx-auto text-center">
-        <span class="block text-[10px] uppercase tracking-[0.4em] text-cyan-600 mb-6 font-bold">Learn. Improve. Expand.</span>
-        <h2 class="serif text-5xl md:text-6xl italic mb-12 text-zinc-900">21 Years of Rhythm.</h2>
-        <p class="text-xl md:text-2xl leading-relaxed font-light mb-8 italic text-zinc-800">
-            From a prestigious scholarship at EMBA in Buenos Aires to International Jazz Festivals in Argentina, Belize and being a busy session drummer.
-        </p>
-        <p class="text-lg text-gray-700 mb-12 max-w-3xl mx-auto leading-loose">
-            Having toured through Chile, Argentina, and the United States with diverse musical projects, I have lived at the intersection of performance and production.
-        </p>
-        <div class="pt-6">
-            <a href="bio.html" class="inline-block text-cyan-600 font-bold border-b-2 border-cyan-600/20 hover:border-cyan-600 hover:text-black transition-all duration-300 uppercase tracking-widest text-xs pb-1">Read Full Career Bio</a>
+        <div class="image-panel short">
+          <img src="img/Desk.JPEG" alt="Recording desk and rack gear at Matias Menarguez Music Studio">
         </div>
-    </div>
-</section>
+      </div>
+    </section>
 
-<section id="contact" class="py-24 px-6 bg-zinc-900">
-    <div class="max-w-3xl mx-auto">
-        <h2 class="text-center serif text-4xl md:text-5xl italic mb-12 text-white">Start Your Project</h2>
-        <form name="contact" method="POST" id="contact-form" data-netlify="true" class="space-y-6">
-            <input type="hidden" name="form-name" value="contact">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="flex flex-col">
-                    <label class="text-xs uppercase tracking-widest text-gray-500 mb-2">Name</label>
-                    <input type="text" name="name" required class="bg-black border border-white/10 p-4 focus:border-cyan-400 outline-none text-white transition">
-                </div>
-                <div class="flex flex-col">
-                    <label class="text-xs uppercase tracking-widest text-gray-500 mb-2">Email</label>
-                    <input type="email" name="email" required class="bg-black border border-white/10 p-4 focus:border-cyan-400 outline-none text-white transition">
-                </div>
-            </div>
-            <div class="flex flex-col">
-                <label class="text-xs uppercase tracking-widest text-gray-500 mb-2">Service Needed</label>
-                <select name="service" id="service-select" required class="bg-black border border-white/10 p-4 focus:border-cyan-400 outline-none text-gray-400 transition appearance-none">
-                    <option disabled selected value="">Select a Service...</option>
-                    <option value="Drums">Remote Drum Recording</option>
-                    <option value="Mixing">Mixing & Production</option>
-                    <option value="Lessons">Drum Lessons (NJ / Zoom)</option>
-                </select>
-            </div>
-            <div class="flex flex-col">
-                <label id="message-label" class="text-xs uppercase tracking-widest text-gray-500 mb-2">Project Brief</label>
-                <textarea id="message-area" name="message" rows="5" placeholder="Tell me about your song..." class="bg-black border border-white/10 p-4 focus:border-cyan-400 outline-none text-white transition"></textarea>
-            </div>
-            <button type="submit" class="w-full bg-cyan-500 text-black py-5 font-bold uppercase tracking-widest hover:bg-white transition shadow-lg">Submit Project Brief</button>
+    <section class="section" id="contact">
+      <div class="wrap contact-panel">
+        <div>
+          <p class="eyebrow">Contact</p>
+          <h2>Ask about lessons or studio work.</h2>
+          <p class="muted">For lessons, mention the student’s age, instrument, and town if it feels relevant. For studio work, send a short note about the project.</p>
+          <p class="muted"><strong>Phone:</strong> <a href="tel:+15512357682">+1 (551) 235-7682</a><br><strong>Email:</strong> <a href="mailto:matumenar@gmail.com">matumenar@gmail.com</a></p>
+        </div>
+        <form class="form" name="inquiry" method="POST" action="/success.html" data-netlify="true" netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="inquiry">
+          <label class="hidden">Do not fill this out <input name="bot-field"></label>
+          <label>Full name <input type="text" name="name" autocomplete="name" required></label>
+          <label>Email or phone <input type="text" name="contact" autocomplete="email" required></label>
+          <label>Interested in
+            <select name="interest" required>
+              <option value="">Choose one</option>
+              <option>Free 30-minute introductory lesson</option>
+              <option>Drum lessons</option>
+              <option>Beginner piano lessons</option>
+              <option>Recording studio / session drums</option>
+              <option>Mixing / production</option>
+              <option>Not sure yet</option>
+            </select>
+          </label>
+          <label>Message <textarea name="message" required placeholder="Tell me what you are looking for."></textarea></label>
+          <button class="button button-primary" type="submit">Send Inquiry</button>
         </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div>
+        <strong>Matias Menarguez Music Studio</strong>
+        <p class="muted" style="margin: 8px 0 0;">Mount Olive, NJ · Lessons and recording by appointment.</p>
+      </div>
+      <div class="footer-links">
+        <a href="tel:+15512357682">+1 (551) 235-7682</a>
+        <a href="mailto:matumenar@gmail.com">matumenar@gmail.com</a>
+        <a href="https://instagram.com/matumenar" target="_blank" rel="noopener noreferrer">Instagram</a>
+      </div>
     </div>
-</section>
+  </footer>
 
-<footer class="py-12 text-center text-gray-600 text-sm border-t border-white/5">
-    © 2026 Matias Menarguez. Located in Mount Olive, NJ.
-</footer>
-
-<script>
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
-            }
-        });
-    });
-
-    const serviceSelect = document.getElementById('service-select');
-    const messageLabel = document.getElementById('message-label');
-    const messageArea = document.getElementById('message-area');
-    const placeholderMap = {
-        'Drums': { label: 'Session Details', placeholder: 'BPM, Vibe/Reference tracks, and song count.' },
-        'Mixing': { label: 'Mixing Project Brief', placeholder: 'Number of stems, genre, and vision.' },
-        'Lessons': { label: 'Student Information', placeholder: 'Age, skill level, and goals.' }
-    };
-
-    serviceSelect.addEventListener('change', (e) => {
-        const selection = e.target.value;
-        if (placeholderMap[selection]) {
-            messageLabel.innerText = placeholderMap[selection].label;
-            messageArea.placeholder = placeholderMap[selection].placeholder;
-        }
-    });
-
-    const contactForm = document.getElementById('contact-form');
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const formData = new FormData(contactForm);
-        fetch("/", {
-            method: "POST",
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: new URLSearchParams(formData).toString(),
-        }).then(() => {
-            window.location.href = `success.html?type=${formData.get('service')}`;
-        }).catch((error) => alert(error));
-    });
-
-    const swiper = new Swiper('.mySwiper', {
-        loop: true,
-        centeredSlides: true,
-        slidesPerView: 1,
-        speed: 800,
-        autoplay: { delay: 5000, disableOnInteraction: false },
-        navigation: { nextEl: '.swiper-next', prevEl: '.swiper-prev' },
-        breakpoints: { 768: { slidesPerView: 3 } }
-    });
-
-    const toggleBtn = document.getElementById('swiper-toggle');
-    toggleBtn.addEventListener('click', () => {
-        if (swiper.autoplay.running) {
-            swiper.autoplay.stop();
-            toggleBtn.innerText = "Play";
-        } else {
-            swiper.autoplay.start();
-            toggleBtn.innerText = "Pause";
-        }
-    });
-
-    // Mobile Menu Toggle
-const menuBtn = document.getElementById('menu-toggle');
-const closeBtn = document.getElementById('menu-close');
-const mobileMenu = document.getElementById('mobile-menu');
-const navLinks = document.querySelectorAll('.mobile-link');
-
-function toggleNav() {
-    mobileMenu.classList.toggle('active');
-    // Prevent scrolling when menu is open
-    document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : 'auto';
-}
-
-menuBtn.addEventListener('click', toggleNav);
-closeBtn.addEventListener('click', toggleNav);
-
-// Close menu when a link is clicked
-navLinks.forEach(link => {
-    link.addEventListener('click', toggleNav);
-});
-</script>
+  <script src="js/site.js"></script>
 </body>
 </html>

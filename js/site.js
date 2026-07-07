@@ -43,7 +43,7 @@ if (reviewTrack && reviewPrev && reviewNext) {
   }, 6500);
 }
 
-document.querySelectorAll("form[data-netlify='true']").forEach((form) => {
+document.querySelectorAll("form[data-lead-form]").forEach((form) => {
   form.addEventListener("submit", () => {
     if (typeof gtag === "function") {
       gtag("event", "generate_lead", {

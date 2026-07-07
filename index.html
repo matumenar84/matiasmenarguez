@@ -189,9 +189,11 @@
           <p class="muted">For lessons, mention the student’s age, instrument, and town if it feels relevant. For studio work, send a short note about the project.</p>
           <p class="muted"><strong>Phone:</strong> <a href="tel:+15512357682">+1 (551) 235-7682</a><br><strong>Email:</strong> <a href="mailto:matumenar@gmail.com">matumenar@gmail.com</a></p>
         </div>
-        <form class="form" name="inquiry" method="POST" action="/success.html" data-netlify="true" netlify-honeypot="bot-field">
-          <input type="hidden" name="form-name" value="inquiry">
-          <label class="hidden">Do not fill this out <input name="bot-field"></label>
+        <form class="form" name="inquiry" method="POST" action="https://formsubmit.co/matumenar@gmail.com" data-lead-form>
+          <input type="hidden" name="_subject" value="New inquiry from Matias Menarguez Music Studio">
+          <input type="hidden" name="_next" value="https://www.matiasmenarguez.com/success.html">
+          <input type="hidden" name="_template" value="table">
+          <label class="hidden">Do not fill this out <input type="text" name="_honey"></label>
           <label>Full name <input type="text" name="name" autocomplete="name" required></label>
           <label>Email or phone <input type="text" name="contact" autocomplete="email" required></label>
           <label>Interested in
